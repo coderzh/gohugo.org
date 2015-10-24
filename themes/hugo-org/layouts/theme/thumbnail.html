@@ -1,0 +1,14 @@
+<div class="col-sm-6 col-md-4 thumbnail-container-parent">
+    <div class="thumbnail-container">
+        <div class="thumbnail">
+            <a href="{{ .Permalink }}">
+                <img class="img-responsive img-rounded" src="{{ .Site.BaseURL }}{{ .Params.thumbnail }}" alt="{{ .Description }}" data-src="{{ .Params.thumbnail }}">
+            </a>
+            <div class="thumbnail-meta">
+                <h4>
+                  <a href="{{ .Permalink }}">{{title (replace .Params.name "-" " ")}}</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>

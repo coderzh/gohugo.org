@@ -1,0 +1,26 @@
+{{ partial "header.html" . }}
+
+<div class="row">
+    <div class="col-sm-8 doc-main">
+        <main role="main">
+            <article>
+                <a id="title"></a>
+                <h1 class="doc-entry-title">{{ .Title }}</h1>
+                {{ if eq .Section "post" }}
+                <div class="doc-entry-meta small">
+                    <span><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> by {{ .Params.author }} </span>
+                </div>
+                {{ end }}
+                <section>{{ if .Params.redirect }}
+                    <p>原文链接：<a href="{{ .Params.redirect }}">{{ .Params.redirect }}</a></p>{{ end }}
+                    {{ .Content }}
+                </section>
+            </article>
+        </main>
+    </div> <!-- /.doc-main -->
+
+    {{ partial "sidebar-single.html" . }}
+
+</div> <!-- /.row -->
+
+{{ partial "footer.html" . }}

@@ -1,0 +1,23 @@
+{{ $baseUrl := .Site.BaseURL }}
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+    <div class="sidebar-module">
+        <h4>Categories</h4>
+        <ul class="list-unstyled">
+        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        {{ range first 1 (where $taxonomy.Pages "Section" "post") }}
+            <li><a class="tag-item" href="{{ $baseUrl }}/categories/{{ $name | urlize }}">{{ $name }}</a></li>
+        {{ end }}
+        {{ end }}
+        </ul>
+    </div>
+    <div class="sidebar-module">
+        <h4>Tags</h4>
+        <div class="tag-box">
+        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+        {{ range first 1 (where $taxonomy.Pages "Section" "post") }}
+        <a class="tag-item" href="{{ $baseUrl }}/tags/{{ $name | urlize }}">{{ $name }}</a>
+        {{ end }}
+        {{ end }}
+        </div>
+    </div>
+</div>

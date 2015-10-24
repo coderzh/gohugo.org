@@ -1,0 +1,56 @@
+{{ partial "header.html" . }}
+    <div id="theme-header">
+        <img src="{{ .Params.screenshot }}" class="screenshot-blurred" />
+        <div class="dark-overlay"></div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 screenshot-container"><img src="{{ .Params.screenshot }}" class="screenshot-normal" /></div>
+            <div class="col-md-6 col-sm-6 theme-details">
+                <h1>{{ .Params.name}}</h1>
+                <p class="description">{{ .Description }}</p>
+                <ul class="theme-meta">
+                    {{ if isset .Params "author" }}
+                        {{ if isset .Params.author "name" }}
+                            <li><span class="label">Author:</span> {{with .Params.author.homepage}}<a href="{{.}}">{{else}}<span class="value">{{end}}{{.Params.author.name}}{{with .Params.author.homepage}}</a>{{else}}</span>{{end}}</li>
+                        {{ end }}
+                    {{ end }}
+                    {{ with .Params.min_version }}
+                        <li><span class="label">Minimum Hugo Version:</span> <span class="value">{{ . }}</span></li>
+                    {{ end }}
+                    {{ with .Params.license }}
+                        <li><span class="label">License:</span> {{if isset $.Params "licenselink"}}<a href="{{$.Params.licenselink}}">{{else}}<span class="value">{{end}}{{.}}{{if isset $.Params "licenselink"}}</a>{{else}}</span>{{end}}</li>
+                    {{ end }}
+                    {{ with .Params.tags }}
+                        <li>
+                            <span class="label">Tags:</span>
+                            {{ range . }}
+                            <a href="/tags/{{ . | urlize }}">{{ . | lower }}</a>
+                            {{ end }}
+                        </li>
+                    {{ end }}
+                </ul>
+            </div>
+
+            <div class="theme-buttons">
+
+                {{ with .Params.source}}
+                <a class="btn btn-info btn-lg" href="{{ . }}"><i class="fa fa-download"></i> Download</a>
+                {{ end }}
+
+                {{ with .Params.demo }}
+                <a class="btn btn-success btn-lg" href="{{ . }}"><i class="fa fa-road"></i> Demo</a>
+                {{ end }}
+
+                {{ with .Params.homepage}}
+                <a class="btn btn-dark btn-lg" href="{{.}}"><i class="fa fa-home"></i> Homepage</a>
+                {{ end }}
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        {{ .Content }}
+    </div>
+
+{{ partial "footer.html" . }}

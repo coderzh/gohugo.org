@@ -1,0 +1,12 @@
+<div class="media">
+    <div class = "pull-left">
+        <img class="media-object" style="width:135px;height:75px;" src="{{ .Params.thumbnail }}" alt="{{ .Description }}">
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">{{ if .Params.redirect }}
+            <a href="{{ .Params.redirect }}">{{ substr .Title 0 64 }}</a>{{ else }}
+            <a href="{{ .Permalink }}">{{ substr .Title 0 64 }}</a>{{ end }}
+        </h4>
+    </div>
+    <p class="doc-entry-meta small"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> by {{ .Params.author }} </p>
+</div>

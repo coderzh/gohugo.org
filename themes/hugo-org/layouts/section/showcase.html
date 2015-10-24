@@ -1,0 +1,9 @@
+{{ partial "header.html" . }}
+    <h1 id="title">Hugo网站列表</h1>
+    <div class="row">
+    {{ range .Data.Pages.ByDate }}
+        {{ .Render "thumbnail"}}
+    {{ end }}
+    </div>
+    <br><br>如果你想把你的网站加进来，欢迎<a href="/contribute/"> 投稿 </a>。
+{{ partial "footer.html" . }}

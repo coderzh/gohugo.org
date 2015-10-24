@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+<div class="row">
+    <div class="col-sm-8 doc-main">
+        <main role="main">
+            <div class="doc-list-header">
+                <h1 id="title">文章列表</h1>
+            </div>
+            <div class="doc-list-entry">
+            {{ range .Data.Pages }}
+            {{ .Render "summary"}}
+            {{ end }}
+            </div>
+            <br><br>
+            如果你想把你的文章加进来，欢迎<a href="/contribute/"> 投稿 </a>。
+        </main>
+    </div>
+    {{ partial "sidebar-list.html" . }}
+</div> 
+{{ partial "footer.html" . }}

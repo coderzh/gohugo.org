@@ -1,0 +1,36 @@
+baseurl: "http://www.gohugo.org"
+languageCode: "zh-CN"
+title: "Hugo"
+copyright: "Copyright © <a href=\"http://blog.coderzh.com/\">CoderZh</a> 2015."
+theme: "hugo-org"
+canonifyurls: true
+RSSUri: "feed.xml"
+menu:
+  main:
+    - Name: "文章列表"
+      Weight: 1
+      Identifier: "post"
+      URL: "/post/"
+    - Name: "皮肤列表"
+      Weight: 2
+      Identifier: "theme"
+      URL: "/theme/"
+    - Name: "示例网站"
+      Weight: 3
+      Identifier: "showcase"
+      URL: "/showcase/"
+    - Name: "官方文档"
+      Weight: 4
+      Identifier: "doc"
+      URL: "https://gohugo.io/overview/introduction/"
+    - Name: "捐赠"
+      Weight: 5
+      Identifier: "donate"
+      URL: "/donate/"
+
+params:
+  Keywords: "Hugo, 博客, 中文, 文档, 皮肤, 示例, 搭建, 教程, 部署"
+  Description: "Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、时尚、快速部署。"
+  noCategoryLink: true
+  #analytics: 
+

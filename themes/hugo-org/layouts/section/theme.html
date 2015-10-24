@@ -1,0 +1,8 @@
+{{ partial "header.html" . }}
+    <h1 id="title">皮肤列表</h1>
+    <div class="row">
+    {{ range .Data.Pages.ByDate }}
+        {{ .Render "thumbnail"}}
+    {{ end }}
+    </div>
+{{ partial "footer.html" . }}
