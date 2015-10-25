@@ -7,7 +7,7 @@
         <meta name="keywords" content="{{ .Site.Params.Keywords }}">{{ end }}{{ if $isHomePage }}
         <meta name="description" content="{{ .Site.Params.Description }}">{{ else }}
         <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Title }}{{ end }}">{{ end }}
-        <link rel="alternate" href="/index.xml" type="application/rss+xml" title="{{ .Site.Title }}">
+        <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="{{ .Site.Title }}">
         <link rel="icon" href="{{ $baseUrl }}/favicon.ico">
         <title>{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}</title>
         <link rel="stylesheet" href="{{ $baseUrl }}/css/highlight.js.min.css">
@@ -36,16 +36,14 @@
                     {{ range .Site.Menus.main }}
                     <li {{ if eq $url .URL }}class="active"{{ end }}><a href="{{ .URL }}">{{ .Name }}</a></li>
                     {{ end }}
-                    {{ if isset .Site.Params "noCategoryLink" }}{{ else }}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">使用文档<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">官方文档<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                        {{ range .Site.Menus.category }}
+                        {{ range .Site.Menus.doc }}
                             <li><a href="{{ .URL }}">{{ .Name }}</a></li>
                         {{ end }}
                         </ul>
                     </li>
-                    {{ end }}
                 </ul>
             </div>
         </div>

@@ -19,18 +19,23 @@ menu:
       Weight: 3
       Identifier: "showcase"
       URL: "/showcase/"
-    - Name: "官方文档"
-      Weight: 4
-      Identifier: "doc"
-      URL: "https://gohugo.io/overview/introduction/"
     - Name: "捐赠"
-      Weight: 5
+      Weight: 4
       Identifier: "donate"
       URL: "/donate/"
+  doc:
+    - Name: "英文文档"
+      Weight: 1
+      Identifier: "doc-en"
+      URL: "https://gohugo.io/overview/introduction/"
+    - Name: "中文文档"
+      Weight: 2
+      Identifier: "doc-cn"
+      URL: "/coming-soon/"
+
 
 params:
   Keywords: "Hugo, 博客, 中文, 文档, 皮肤, 示例, 搭建, 教程, 部署"
   Description: "Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、时尚、快速部署。"
-  noCategoryLink: true
   #analytics: 
 
