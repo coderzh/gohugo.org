@@ -1,10 +1,11 @@
 baseurl: "http://www.gohugo.org"
 languageCode: "zh-CN"
-title: "Hugo"
+title: "Hugo中文文档"
 copyright: "Copyright © <a href=\"http://blog.coderzh.com/\">CoderZh</a> 2015."
 theme: "hugo-org"
 canonifyurls: true
 RSSUri: "feed.xml"
+
 menu:
   main:
     - Name: "文章列表"
@@ -36,6 +37,6 @@ menu:
 
 params:
   Keywords: "Hugo, 博客, 中文, 文档, 皮肤, 示例, 搭建, 教程, 部署"
-  Description: "Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、时尚、快速部署。"
-  #analytics: 
+  Description: "Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、易扩展、快速部署。"
+  analytics: "UA-10147768-3"
 

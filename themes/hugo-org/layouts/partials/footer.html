@@ -3,12 +3,14 @@
 <hr />
 
 <div class="row">
-    {{ if eq $isHomePage true }}
-	<div class="pull-right">
-    {{ else }}
-	<div class="text-center">
-    {{ end }}
-		<p class="doc-footer-em"><a href="#">回到顶部↑</a></p>
+    <div class="col-sm-12">
+        {{ if eq $isHomePage true }}
+	    <div class="pull-right">
+        {{ else }}
+	    <div class="text-center">
+        {{ end }}
+		    <p class="doc-footer-em"><a href="#">回到顶部↑</a></p>
+	    </div>
 	</div>
 </div>
 

@@ -8,8 +8,12 @@
         <meta name="description" content="{{ .Site.Params.Description }}">{{ else }}
         <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Title }}{{ end }}">{{ end }}
         <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="{{ .Site.Title }}">
-        <link rel="icon" href="{{ $baseUrl }}/favicon.ico">
-        <title>{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}</title>
+        <link rel="icon" href="{{ $baseUrl }}/favicon.ico">{{ if $isHomePage }}
+        <title>{{ .Title }} </title>{{ else if eq .URL "/post/" }}
+        <title>文章列表 - {{ .Site.Title }}</title>{{ else if eq .URL "/theme/" }}
+        <title>皮肤列表 - {{ .Site.Title }}</title>{{ else if eq .URL "/showcase/" }}
+        <title>示例网站 - {{ .Site.Title }}</title>{{ else }}
+        <title>{{ .Title }} - {{ .Site.Title }}</title>{{ end }}
         <link rel="stylesheet" href="{{ $baseUrl }}/css/highlight.js.min.css">
         <link rel="stylesheet" href="{{ $baseUrl }}/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ $baseUrl }}/css/bootstrap-theme.css">

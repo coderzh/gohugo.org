@@ -4,22 +4,28 @@
 <main role="main">
 
 <div class="row">
-    <div class="jumbotron">
-        <h1>{{ .Site.Title }}</h1>
-        <p>{{ .Site.Params.Description }}</p>
+    <div class="col-sm-12">
+        <div class="jumbotron">
+            <h1>{{ .Site.Title }}</h1>
+            <p>{{ .Site.Params.Description }}</p>
+        </div>
     </div>
 </div>
 
 {{ range where .Site.Pages "Title" "_index" }}
-    <div class="row doc-main">
+<div class="row doc-main">
+    <div class="col-sm-12">
         {{ .Content }}
     </div>
+</div>
 {{ end }}
 
 <hr />
 
 <div class="row doc-main text-center">
-    <a href="{{ $baseUrl }}/post">更多文章</a>
+    <div class="col-sm-12">
+        <a href="{{ $baseUrl }}/post">更多文章</a>
+    </div>
 </div>
 
 </main>
