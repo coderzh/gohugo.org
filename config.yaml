@@ -24,6 +24,15 @@ menu:
       Weight: 4
       Identifier: "donate"
       URL: "/donate/"
+  link:
+    - Name: "官方GitHub"
+      Weight: 1
+      Identifier: "hugo-github"
+      URL: "https://github.com/spf13/hugo"
+    - Name: "本站GitHub"
+      Weight: 2
+      Identifier: "hugo-org-github"
+      URL: "https://github.com/coderzh/gohugo.org"
   doc:
     - Name: "英文文档"
       Weight: 1
