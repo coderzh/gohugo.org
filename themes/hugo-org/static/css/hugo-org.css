@@ -65,6 +65,7 @@ h2, .h2 {
   font-style: italic;
   text-align: right;
   color: #999;
+  margin-bottom: 10px;
 }
 
 .post-row {

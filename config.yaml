@@ -5,6 +5,8 @@ copyright: "Copyright © <a href=\"http://blog.coderzh.com/\">CoderZh</a> 2015."
 theme: "hugo-org"
 canonifyurls: true
 RSSUri: "feed.xml"
+MetaDataFormat: "yaml"
+hasCJKLanguage: true
 
 menu:
   main:

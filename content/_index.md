@@ -93,8 +93,6 @@ title = "about"
 $ hugo new post/first.md
 ```
 
-`archetypes` 目录里的 `default.md` 可以定义默认生成的文章模板。假设我已修改为了 `YAML ` 格式的 `FontMatter`。
-
 打开编辑 `post/first.md` ：
 
 ```

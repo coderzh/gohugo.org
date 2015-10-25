@@ -1,6 +1,8 @@
 <div class="media">
-    <div class = "pull-left">
-        <img class="media-object" style="width:135px;height:75px;" src="{{ .Params.thumbnail }}" alt="{{ .Description }}">
+    <div class = "pull-left">{{ if isset .Params "thumbnail" }}
+        <img class="media-object" style="width:135px;height:75px;" src="{{ .Params.thumbnail }}" alt="{{ .Description }}">{{ else }}
+        {{ $len := .Title | len }}
+        <img class="media-object" style="width:135px;height:75px;" src="/hugo/hugo{{ mod $len 12 }}.png" alt="{{ .Description }}">{{ end }}
     </div>
     <div class="media-body">
         <h4 class="media-heading">{{ if .Params.redirect }}
