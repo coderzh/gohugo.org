@@ -131,7 +131,7 @@ $ hugo server --theme=hyde --buildDrafts --watch
 
 使用 `--watch` 参数可以在修改文章内容时让浏览器自动刷新。
 
-浏览器里打开： [http://localhost:1313]()
+浏览器里打开： `http://localhost:1313`
 
 ### 部署
 
