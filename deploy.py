@@ -34,7 +34,7 @@ def deploy():
         os.system('git reset --hard origin/master')
         os.system('git clean -fdx')
         # step2 build
-        os.system('hugo -v -cacheDir="./cache"')
+        os.system('hugo -v --cacheDir="./cache"')
 
     deploy_dir = os.path.join(parent_dir, 'deploy')
 
