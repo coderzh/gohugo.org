@@ -1,12 +1,8 @@
 ---
 date: "2015-10-10T23:15:45+08:00"
-title: "index"
-withSitePosts: true
-type: "ignore"
+title: "快速开始"
 
 ---
-
-## 快速开始
 
 ### 安装Hugo
 

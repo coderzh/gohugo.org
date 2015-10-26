@@ -1,23 +1,10 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{{ range where .Data.Pages ".Type" "in" "page post" }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{{ range .Data.Pages }}
     <url>
-        <loc>{{ .Permalink }}</loc>
-        <lastmod>{{ safeHTML ( .Date.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>{{ with .Sitemap.ChangeFreq }}
+        <loc>{{ .Permalink }}</loc>{{ if eq .Section "theme" }}
+        <lastmod>2015-10-26T00:00:00+00:00</lastmod>{{ else }}
+        <lastmod>{{ safeHTML ( .Date.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>{{ end }}{{ with .Sitemap.ChangeFreq }}
         <changefreq>{{ . }}</changefreq>{{ end }}{{ if ge .Sitemap.Priority 0.0 }}
         <priority>{{ .Sitemap.Priority }}</priority>{{ end }}
     </url>
     {{ end }}
-    <url>
-        <loc>http://www.gohugo.org/post/</loc>
-        <lastmod>2015-10-26T00:00:00+00:00</lastmod>
-    </url>
-
-    <url>
-        <loc>http://www.gohugo.org/theme/</loc>
-        <lastmod>2015-10-26T00:00:00+00:00</lastmod>
-    </url>
-
-    <url>
-        <loc>http://www.gohugo.org/showcase/</loc>
-        <lastmod>2015-10-26T00:00:00+00:00</lastmod>
-    </url>
 </urlset>

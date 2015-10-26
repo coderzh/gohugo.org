@@ -1,8 +1,6 @@
 {{ $baseUrl := .Site.BaseURL }}
 {{ partial "header.html" . }}
 
-<main role="main">
-
 <div class="row">
     <div class="col-sm-12">
         <div class="jumbotron">
@@ -12,13 +10,21 @@
     </div>
 </div>
 
-{{ range where .Site.Pages "Title" "index" }}
 <div class="row doc-main">
     <div class="col-sm-12">
-        {{ .Content }}
+        <main role="main">
+{{ range where .Site.Pages "Title" "快速开始"}}
+            <article>
+                <a id="title"></a>
+                <h1 class="doc-entry-title">{{ .Title }}</h1>
+                <section>
+                    {{ .Content }}
+                </section>
+            </article>
+{{ end }}
+        </main>
     </div>
 </div>
-{{ end }}
 
 <hr />
 
@@ -27,7 +33,5 @@
         <a href="{{ $baseUrl }}/post">更多文章</a>
     </div>
 </div>
-
-</main>
 
 {{ partial "footer.html" . }}
