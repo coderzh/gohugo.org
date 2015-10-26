@@ -1,0 +1,4 @@
+ErrorDocument 404 /404.html
+Header set X-frame-options SAMEORIGIN
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Content-Type-Options nosniff
