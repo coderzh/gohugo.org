@@ -1,7 +1,8 @@
 ---
 date: "2015-10-10T23:15:45+08:00"
-title: "_index"
+title: "index"
 withSitePosts: true
+type: "ignore"
 
 ---
 
