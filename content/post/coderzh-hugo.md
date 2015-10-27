@@ -232,17 +232,26 @@ $ hugo import jekyll YourJekyllDir TargetDir
 
 ### 关于部署
 
-Update(2015-10-08)
+假设你需要部署在 `GitHub Pages` 上，首先在GitHub上创建一个Repository，命名为：`coderzh.github.io` （coderzh替换为你的github用户名）。
 
-Hugo部署到GitHub，首先在config.yaml(.toml)里设置好baseurl，然后用Hugo生成静态页面（生成的文件全在public文件夹里）
+在站点根目录执行 `Hugo` 命令生成最终页面：
 
 ```bash
-$ hugo -v  --cacheDir="./cache"
+$ hugo --theme=hyde --baseUrl="http://coderzh.github.io/"
 ```
 
-然后将public文件夹里的全部内容都push到你的GitHub的Repo的gh-pages分支即可。
+如果一切顺利，所有静态页面都会生成到 `public` 目录，将pubilc目录里所有文件 `push` 到刚创建的Repository的 `master` 分支。
 
-官方关于在GitHub部署的文档：[https://gohugo.io/tutorials/github-pages-blog/](https://gohugo.io/tutorials/github-pages-blog/)
+```bash
+$ cd public
+$ git init
+$ git remote add origin https://github.com/coderzh/coderzh.github.io.git
+$ git add -A
+$ git commit -m "first commit"
+$ git push -u origin master
+```
+
+浏览器里访问：`http://coderzh.github.io/`
 
 自动部署的脚本可以参考我的Repo里的`deploy.py`脚本：[https://github.com/coderzh/coderzh-hugo-blog](https://github.com/coderzh/coderzh-hugo-blog)
 
