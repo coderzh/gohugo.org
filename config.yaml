@@ -43,7 +43,7 @@ menu:
     - Name: "中文文档"
       Weight: 2
       Identifier: "doc-cn"
-      URL: "/coming-soon/"
+      URL: "/doc/"
 
 
 params:
