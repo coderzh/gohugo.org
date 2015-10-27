@@ -9,7 +9,7 @@ def main():
     if os.path.exists('public'):
         shutil.rmtree('public')
 
-    os.system('hugo server -w -v')
+    os.system('hugo server -w')
 
 
 if __name__ == '__main__':

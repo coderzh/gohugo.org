@@ -52,8 +52,9 @@ Syntax highlighting is enabled by default and it uses the nice [rainbow js](http
 ### Reponsive Images
 
 For responsive images you could use the built-in responsive image shortcode (without the `/**/` characters):  
+
 ```
-{{%/*/* img-responsive "http://example.com/image.jpg" */*/%}}
+{{%/* img-responsive "http://example.com/image.jpg" */%}}
 ```
 
 ### Screenshot

@@ -147,11 +147,11 @@ Last but not least I included some useful [shortcodes](http://gohugo.io/extras/s
 
 This way you can include a gallery into your post. Copy the code below into your content file and enter the relative paths to your images.
 
-    {{< gallery
+    {{</* gallery
         "/banners/placeholder.png"
         "/banners/placeholder.png"
         "/banners/placeholder.png"
-    >}}
+    */>}}
 
 
 ### Github Gists
