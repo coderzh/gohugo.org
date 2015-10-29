@@ -1,13 +1,15 @@
 <div class="media">
-    <div class = "pull-left">{{ if isset .Params "thumbnail" }}
-        <img class="media-object" style="width:135px;height:75px;" src="{{ .Params.thumbnail }}" alt="{{ .Description }}">{{ else }}
+    <div class = "pull-left">
+        <a href="{{ if .Params.redirect }}{{ .Params.redirect }}{{ else }}{{ .Permalink }}{{ end }}">
+        {{ if isset .Params "thumbnail" }}
+        <img class="img-thumbnail" style="width:135px;height:75px;" src="{{ .Params.thumbnail }}" alt="{{ .Title }}">{{ else }}
         {{ $len := .Title | len }}
-        <img class="media-object" style="width:135px;height:75px;" src="/hugo/hugo{{ mod $len 12 }}.png" alt="{{ .Description }}">{{ end }}
+        <img class="img-thumbnail" style="width:135px;height:75px;" src="/hugo/hugo{{ mod $len 12 }}.png" alt="{{ .Title }}">{{ end }}
+        </a>
     </div>
     <div class="media-body">
-        <h4 class="media-heading">{{ if .Params.redirect }}
-            <a href="{{ .Params.redirect }}">{{ substr .Title 0 64 }}</a>{{ else }}
-            <a href="{{ .Permalink }}">{{ substr .Title 0 64 }}</a>{{ end }}
+        <h4 class="media-heading">
+            <a href="{{ if .Params.redirect }}{{ .Params.redirect }}{{ else }}{{ .Permalink }}{{ end }}">{{ substr .Title 0 64 }}</a>
         </h4>
     </div>
     <p class="doc-entry-meta small"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> by {{ .Params.author }} </p>
