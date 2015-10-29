@@ -44,6 +44,12 @@ h2, .h2 {
   line-height: 1.5;
 }
 
+.doc-main img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+}
+
 .doc-main pre {
     padding: 3px;
 }
