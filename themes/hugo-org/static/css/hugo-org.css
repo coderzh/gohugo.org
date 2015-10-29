@@ -50,6 +50,10 @@ h2, .h2 {
   display: block;
 }
 
+.doc-main p {
+  word-wrap: break-word
+}
+
 .doc-main pre {
     padding: 3px;
 }
