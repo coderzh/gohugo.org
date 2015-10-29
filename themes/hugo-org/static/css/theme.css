@@ -207,6 +207,10 @@ body {
     padding: 3px;
 }
 
+.content p {
+  word-wrap: break-word
+}
+
 .content pre code {
     font-size: 16px !important;
 }
