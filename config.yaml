@@ -22,7 +22,7 @@ menu:
       Weight: 3
       Identifier: "showcase"
       URL: "/showcase/"
-    - Name: "捐赠"
+    - Name: "关于"
       Weight: 4
       Identifier: "donate"
       URL: "/donate/"
