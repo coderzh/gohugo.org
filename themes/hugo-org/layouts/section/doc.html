@@ -3,10 +3,10 @@
 <div class="container-fluid">
 
 <div class="row">
-    <div class="col-xs-3 col-sm-3">
+    <div class="col-xs-12 col-sm-3">
         {{ partial "menu.html" . }}
     </div>
-    <div class="col-xs-9 col-sm-9 doc-main">
+    <div class="col-xs-12 col-sm-9 doc-main">
         {{ range where .Site.Pages "RelPermalink" "/doc/overview/introduction/"}}
         <main role="main">
             <article>
