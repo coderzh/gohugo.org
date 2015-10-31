@@ -1,0 +1,606 @@
+---
+aliases:
+- /doc/layout/functions/
+date: 2013-07-01
+linktitle: Functions
+toc: true
+menu:
+  doc:
+    name: 函数
+    parent: layout
+next: /doc/templates/variables
+prev: /doc/templates/go-templates
+title: Hugo Template Functions
+weight: 20
+---
+
+Hugo uses the excellent Go html/template library for its template engine.
+It is an extremely lightweight engine that provides a very small amount of
+logic. In our experience, it is just the right amount of logic to be able
+to create a good static website.
+
+Go templates are lightweight but extensible. Hugo has added the following
+functions to the basic template logic.
+
+(Go itself supplies built-in functions, including comparison operators
+and other basic tools; these are listed in the
+[Go template documentation](http://golang.org/pkg/text/template/#hdr-Functions).)
+
+## General
+
+### delimit
+Loops through any array, slice or map and returns a string of all the values separated by the delimiter. There is an optional third parameter that lets you choose a different delimiter to go between the last two values.
+Maps will be sorted by the keys, and only a slice of the values will be returned, keeping a consistent output order.
+
+Works on [lists](/doc/templates/list/), [taxonomies](/doc/taxonomies/displaying/), [terms](/doc/templates/terms/), [groups](/doc/templates/list/)
+
+e.g.
+
+    // Front matter
+    +++
+    tags: [ "tag1", "tag2", "tag3" ]
+    +++
+
+    // Used anywhere in a template
+    Tags: {{ delimit .Params.tags ", " }}
+
+    // Outputs Tags: tag1, tag2, tag3
+
+    // Example with the optional "last" parameter
+    Tags: {{ delimit .Params.tags ", " " and " }}
+
+    // Outputs Tags: tag1, tag2 and tag3
+
+
+### echoParam
+Prints a parameter if it is set.
+
+e.g. `{{ echoParam .Params "project_url" }}`
+
+
+### eq
+Returns true if the parameters are equal.
+
+e.g.
+
+    {{ if eq .Section "blog" }}current{{ end }}
+
+
+### first
+Slices an array to only the first _N_ elements.
+
+Works on [lists](/doc/templates/list/), [taxonomies](/doc/taxonomies/displaying/), [terms](/doc/templates/terms/), [groups](/doc/templates/list/)
+
+e.g.
+
+    {{ range first 10 .Data.Pages }}
+        {{ .Render "summary" }}
+    {{ end }}
+
+
+### getenv
+Returns the value of an environment variable.
+
+Takes a string containing the name of the variable as input. Returns
+an empty string if the variable is not set, otherwise returns the
+value of the variable. Note that in Unix-like environments, the
+variable must also be exported in order to be seen by `hugo`.
+
+e.g.
+
+    {{ getenv "HOME" }}
+
+
+### in
+Checks if an element is in an array (or slice) and returns a boolean.
+The elements supported are strings, integers and floats (only float64 will match as expected).
+In addition, it can also check if a substring exists in a string.
+
+e.g.
+
+    {{ if in .Params.tags "Git" }}Follow me on GitHub!{{ end }}
+
+or
+
+    {{ if in "this string contains a substring" "substring" }}Substring found!{{ end }}
+
+
+### intersect
+Given two arrays (or slices), this function will return the common elements in the arrays.
+The elements supported are strings, integers and floats (only float64).
+
+A useful example of this functionality is a 'similar posts' block.
+Create a list of links to posts where any of the tags in the current post match any tags in other posts.
+
+e.g.
+
+    <ul>
+    {{ $page_link := .Permalink }}
+    {{ $tags := .Params.tags }}
+    {{ range .Site.Recent }}
+        {{ $page := . }}
+        {{ $has_common_tags := intersect $tags .Params.tags | len | lt 0 }}
+        {{ if and $has_common_tags (ne $page_link $page.Permalink) }}
+            <li><a href="{{ $page.Permalink }}">{{ $page.Title }}</a></li>
+        {{ end }}
+    {{ end }}
+    </ul>
+
+
+### isset
+Returns true if the parameter is set.
+Takes either a slice, array or channel and an index or a map and a key as input.
+
+e.g. `{{ if isset .Params "project_url" }} {{ index .Params "project_url" }}{{ end }}`
+
+### seq
+
+Creates a sequence of integers. It's named and used as GNU's seq.
+
+Some examples:
+
+* `3` => `1, 2, 3`
+* `1 2 4` => `1, 3`
+* `-3` => `-1, -2, -3`
+* `1 4` => `1, 2, 3, 4`
+* `1 -2` => `1, 0, -1, -2`
+
+### sort
+Sorts maps, arrays and slices, returning a sorted slice.
+A sorted array of map values will be returned, with the keys eliminated.
+There are two optional arguments, which are `sortByField` and `sortAsc`.
+If left blank, sort will sort by keys (for maps) in ascending order.
+
+Works on [lists](/doc/templates/list/), [taxonomies](/doc/taxonomies/displaying/), [terms](/doc/templates/terms/), [groups](/doc/templates/list/)
+
+e.g.
+
+    // Front matter
+    +++
+    tags: [ "tag3", "tag1", "tag2" ]
+    +++
+
+    // Site config
+    +++
+    [params.authors]
+      [params.authors.Derek]
+        "firstName"  = "Derek"
+        "lastName"   = "Perkins"
+      [params.authors.Joe]
+        "firstName"  = "Joe"
+        "lastName"   = "Bergevin"
+      [params.authors.Tanner]
+        "firstName"  = "Tanner"
+        "lastName"   = "Linsley"
+    +++
+
+    // Use default sort options - sort by key / ascending
+    Tags: {{ range sort .Params.tags }}{{ . }} {{ end }}
+
+    // Outputs Tags: tag1 tag2 tag3
+
+    // Sort by value / descending
+    Tags: {{ range sort .Params.tags "value" "desc" }}{{ . }} {{ end }}
+
+    // Outputs Tags: tag3 tag2 tag1
+
+    // Use default sort options - sort by value / descending
+    Authors: {{ range sort .Site.Params.authors }}{{ .firstName }} {{ end }}
+
+    // Outputs Authors: Derek Joe Tanner
+
+    // Use default sort options - sort by value / descending
+    Authors: {{ range sort .Site.Params.authors "lastName" "desc" }}{{ .lastName }} {{ end }}
+
+    // Outputs Authors: Perkins Linsley Bergevin
+
+
+### where
+Filters an array to only elements containing a matching value for a given field.
+
+Works on [lists](/doc/templates/list/), [taxonomies](/doc/taxonomies/displaying/), [terms](/doc/templates/terms/), [groups](/doc/templates/list/)
+
+e.g.
+
+    {{ range where .Data.Pages "Section" "post" }}
+       {{ .Content }}
+    {{ end }}
+
+It can be used with dot chaining second argument to refer a nested element of a value.
+
+e.g.
+
+    // Front matter on some pages
+    +++
+    series: golang
+    +++
+
+    {{ range where .Site.Recent "Params.series" "golang" }}
+       {{ .Content }}
+    {{ end }}
+
+It can also be used with an operator like `!=`, `>=`, `in` etc. Without an operator (like above), `where` compares a given field with a matching value in a way like `=` is specified.
+
+e.g.
+
+    {{ range where .Data.Pages "Section" "!=" "post" }}
+       {{ .Content }}
+    {{ end }}
+
+Following operators are now available
+
+- `=`, `==`, `eq`: True if a given field value equals a matching value
+- `!=`, `<>`, `ne`: True if a given field value doesn't equal a matching value
+- `>=`, `ge`: True if a given field value is greater than or equal to a matching value
+- `>`, `gt`: True if a given field value is greater than a matching value
+- `<=`, `le`: True if a given field value is lesser than or equal to a matching value
+- `<`, `lt`: True if a given field value is lesser than a matching value
+- `in`: True if a given field value is included in a matching value. A matching value must be an array or a slice
+- `not in`: True if a given field value isn't included in a matching value. A matching value must be an array or a slice
+
+*`where` and `first` can be stacked, e.g.:*
+
+    {{ range first 5 (where .Data.Pages "Section" "post") }}
+       {{ .Content }}
+    {{ end }}
+
+
+## Math
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>add</code></td>
+<td>Adds two integers.</td>
+<td><code>{{add 1 2}}</code> → 3</td>
+</tr>
+
+<tr>
+<td><code>div</code></td>
+<td>Divides two integers.</td>
+<td><code>{{div 6 3}}</code> → 2</td>
+</tr>
+
+<tr>
+<td><code>mod</code></td>
+<td>Modulus of two integers.</td>
+<td><code>{{mod 15 3}}</code> → 0</td>
+</tr>
+
+<tr>
+<td><code>modBool</code></td>
+<td>Boolean of modulus of two integers.  <code>true</code> if modulus is 0.</td>
+<td><code>{{modBool 15 3}}</code> → true</td>
+</tr>
+
+<tr>
+<td><code>mul</code></td>
+<td>Multiplies two integers.</td>
+<td><code>{{mul 2 3}}</code> → 6</td>
+</tr>
+
+<tr>
+<td><code>sub</code></td>
+<td>Subtracts two integers.</td>
+<td><code>{{sub 3 2}}</code> → 1</td>
+</tr>
+
+</tbody>
+</table>
+
+
+## Strings
+
+### chomp
+Removes any trailing newline characters. Useful in a pipeline to remove newlines added by other processing (including `markdownify`).
+
+e.g., `{{chomp "<p>Blockhead</p>\n"` → `"<p>Blockhead</p>"`
+
+
+### dateFormat
+Converts the textual representation of the datetime into the other form or returns it of Go `time.Time` type value.
+These are formatted with the layout string.
+
+e.g. `{{ dateFormat "Monday, Jan 2, 2006" "2015-01-21" }}` →"Wednesday, Jan 21, 2015"
+
+
+### highlight
+Takes a string of code and a language, uses Pygments to return the syntax highlighted code in HTML.
+Used in the [highlight shortcode](/doc/extras/highlighting/).
+
+
+### lower
+Converts all characters in string to lowercase.
+
+e.g. `{{lower "BatMan"}}` → "batman"
+
+
+### markdownify
+
+Runs the string through the Markdown processesor. The result will be declared as "safe" so Go templates will not filter it.
+
+e.g. `{{ .Title | markdownify }}`
+
+
+### replace
+Replaces all occurrences of the search string with the replacement string.
+
+e.g. `{{ replace "Batman and Robin" "Robin" "Catwoman" }}` → "Batman and Catwoman"
+
+
+### safeHTML
+Declares the provided string as a "safe" HTML document fragment
+so Go html/template will not filter it.  It should not be used
+for HTML from a third-party, or HTML with unclosed tags or comments.
+
+Example: Given a site-wide `config.toml` that contains this line:
+
+    copyright = "© 2015 Jane Doe.  <a href=\"http://creativecommons.org/licenses/by/4.0/\">Some rights reserved</a>."
+
+`{{ .Site.Copyright | safeHTML }}` would then output:
+
+> © 2015 Jane Doe.  <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>.
+
+However, without the `safeHTML` function, html/template assumes
+`.Site.Copyright` to be unsafe, escaping all HTML tags,
+rendering the whole string as plain-text like this:
+
+<blockquote>
+<p>© 2015 Jane Doe.  &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;.</p>
+</blockquote>
+
+<!--
+### safeHTMLAttr
+Declares the provided string as a "safe" HTML attribute
+from a trusted source, for example, ` dir="ltr"`,
+so Go html/template will not filter it.
+
+Example: Given a site-wide `config.toml` that contains this menu entry:
+
+    [[menu.main]]
+        name = "IRC: #golang at freenode"
+        url = "irc://irc.freenode.net/#golang"
+
+* `<a href="{{ .URL }}">` ⇒ `<a href="#ZgotmplZ">` (Bad!)
+* `<a {{ printf "href=%q" .URL | safeHTMLAttr }}>` ⇒ `<a href="irc://irc.freenode.net/#golang">` (Good!)
+-->
+
+
+### safeCSS
+Declares the provided string as a known "safe" CSS string
+so Go html/templates will not filter it.
+"Safe" means CSS content that matches any of:
+
+1. The CSS3 stylesheet production, such as `p { color: purple }`.
+2. The CSS3 rule production, such as `a[href=~"https:"].foo#bar`.
+3. CSS3 declaration productions, such as `color: red; margin: 2px`.
+4. The CSS3 value production, such as `rgba(0, 0, 255, 127)`.
+
+Example: Given `style = "color: red;"` defined in the front matter of your `.md` file:
+
+* `<p style="{{ .Params.style | safeCSS }}">…</p>` ⇒ `<p style="color: red;">…</p>` (Good!)
+* `<p style="{{ .Params.style }}">…</p>` ⇒ `<p style="ZgotmplZ">…</p>` (Bad!)
+
+Note: "ZgotmplZ" is a special value that indicates that unsafe content reached a
+CSS or URL context.
+
+### slicestr
+
+Slicing in `slicestr` is done by specifying a half-open range with two indices, `start` and `end`.
+For example, 1 and 4 creates a slice including elements 1 through 3.
+The `end` index can be omitted; it defaults to the string's length.
+
+e.g.
+
+* `{{slicestr "BatMan" 3}}` → "Man"
+* `{{slicestr "BatMan" 0 3}}` → "Bat"
+
+### substr
+
+Extracts parts of a string, beginning at the character at the specified
+position, and returns the specified number of characters.
+
+It normally takes two parameters: `start` and `length`.
+It can also take one parameter: `start`, i.e. `length` is omitted, in which case
+the substring starting from start until the end of the string will be returned.
+
+To extract characters from the end of the string, use a negative start number.
+
+In addition, borrowing from the extended behavior described at http://php.net/substr,
+if `length` is given and is negative, then that many characters will be omitted from
+the end of string.
+
+e.g.
+
+* `{{substr "BatMan" 0 -3}}` → "Bat"
+* `{{substr "BatMan" 3 3}}` → "Man"
+
+### title
+Converts all characters in string to titlecase.
+
+e.g. `{{title "BatMan"}}` → "Batman"
+
+
+### trim
+Returns a slice of the string with all leading and trailing characters contained in cutset removed.
+
+e.g. `{{ trim "++Batman--" "+-" }}` → "Batman"
+
+
+### upper
+Converts all characters in string to uppercase.
+
+e.g. `{{upper "BatMan"}}` → "BATMAN"
+
+
+
+
+## URLs
+
+### absURL, relURL
+
+Both `absURL` and `relURL` considers the configured value of `baseURL`, so given a `baseURL` set to `http://mysite.com/hugo/`:
+
+* `{{ "mystyle.css" | absURL }}` → "http://mysite.com/hugo/mystyle.css"
+* `{{ "mystyle.css" | relURL }}` → "/hugo/mystyle.css"
+* `{{ "http://gohugo.io/" | relURL }}` →  "http://gohugo.io/"
+* `{{ "http://gohugo.io/" | absURL }}` →  "http://gohugo.io/"
+
+The last two examples may look funky, but is useful if you, say, have a list of images, some of them hosted externally, some locally:
+
+```
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "image" : {{ apply .Params.images "absURL" "." }}
+}
+</script>
+```
+
+The above also exploits the fact that the Go template parser JSON-encodes objects inside `script` tags.
+
+
+
+**Note:** These functions are smart about missing slashes, but will not add one to the end if not present.
+
+
+### ref, relref
+Looks up a content page by relative path or logical name to return the permalink (`ref`) or relative permalink (`relref`). Requires a Node or Page object (usually satisfied with `.`). Used in the [`ref` and `relref` shortcodes]({{% ref "doc/extras/crossreferences.md" %}}).
+
+e.g. {{ ref . "about.md" }}
+
+### safeURL
+Declares the provided string as a "safe" URL or URL substring (see [RFC 3986][]).
+A URL like `javascript:checkThatFormNotEditedBeforeLeavingPage()` from a trusted
+source should go in the page, but by default dynamic `javascript:` URLs are
+filtered out since they are a frequently exploited injection vector.
+
+[RFC 3986]: http://tools.ietf.org/html/rfc3986
+
+Without `safeURL`, only the URI schemes `http:`, `https:` and `mailto:`
+are considered safe by Go.  If any other URI schemes, e.g.&nbsp;`irc:` and
+`javascript:`, are detected, the whole URL would be replaced with
+`#ZgotmplZ`.  This is to "defang" any potential attack in the URL,
+rendering it useless.
+
+Example: Given a site-wide `config.toml` that contains this menu entry:
+
+    [[menu.main]]
+        name = "IRC: #golang at freenode"
+        url = "irc://irc.freenode.net/#golang"
+
+The following template:
+
+    <ul class="sidebar-menu">
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+
+would produce `<li><a href="#ZgotmplZ">IRC: #golang at freenode</a></li>`
+for the `irc://…` URL.
+
+To fix this, add ` | safeURL` after `.URL` on the 3rd line, like this:
+
+      <li><a href="{{ .URL | safeURL }}">{{ .Name }}</a></li>
+
+With this change, we finally get `<li><a href="irc://irc.freenode.net/#golang">IRC: #golang at freenode</a></li>`
+as intended.
+
+
+### urlize
+Takes a string and sanitizes it for usage in URLs, converts spaces to "-".
+
+e.g. `<a href="/tags/{{ . | urlize }}">{{ . }}</a>`
+
+
+
+## Content Views
+
+### Render
+Takes a view to render the content with.  The view is an alternate layout, and should be a file name that points to a template in one of the locations specified in the documentation for [Content Views](/doc/templates/views).
+
+This function is only available on a piece of content, and in list context.
+
+This example could render a piece of content using the content view located at `/layouts/_default/summary.html`:
+
+    {{ range .Data.Pages }}
+        {{ .Render "summary"}}
+    {{ end }}
+
+
+
+## Advanced
+
+### apply
+
+Given a map, array, or slice, returns a new slice with a function applied over it. Expects at least three parameters, depending on the function being applied. The first parameter is the sequence to operate on; the second is the name of the function as a string, which must be in the Hugo function map (generally, it is these functions documented here). After that, the parameters to the applied function are provided, with the string `"."` standing in for each element of the sequence the function is to be applied against. An example is in order:
+
+    +++
+    names: [ "Derek Perkins", "Joe Bergevin", "Tanner Linsley" ]
+    +++
+
+    {{ apply .Params.names "urlize" "." }} → [ "derek-perkins", "joe-bergevin", "tanner-linsley" ]
+
+This is roughly equivalent to:
+
+    {{ range .Params.names }}{{ . | urlize }}{{ end }}
+
+However, it isn’t possible to provide the output of a range to the `delimit` function, so you need to `apply` it. A more complete example should explain this. Let's say you have two partials for displaying tag links in a post,  "post/tag/list.html" and "post/tag/link.html", as shown below.
+
+    <!-- post/tag/list.html -->
+    {{ with .Params.tags }}
+    <div class="tags-list">
+      Tags:
+      {{ $len := len . }}
+      {{ if eq $len 1 }}
+        {{ partial "post/tag/link" (index . 0) }}
+      {{ else }}
+        {{ $last := sub $len 1 }}
+        {{ range first $last . }}
+          {{ partial "post/tag/link" . }},
+        {{ end }}
+        {{ partial "post/tag/link" (index . $last) }}
+      {{ end }}
+    </div>
+    {{ end }}
+
+
+    <!-- post/tag/link.html -->
+    <a class="post-tag post-tag-{{ . | urlize }}" href="/tags/{{ . | urlize }}">{{ . }}</a>
+
+This works, but the complexity of "post/tag/list.html" is fairly high; the Hugo template needs to perform special behaviour for the case where there’s only one tag, and it has to treat the last tag as special. Additionally, the tag list will be rendered something like "Tags: tag1 , tag2 , tag3" because of the way that the HTML is generated and it is interpreted by a browser.
+
+This is Hugo. We have a better way. If this were your "post/tag/list.html" instead, all of those problems are fixed automatically (this first version separates all of the operations for ease of reading; the combined version will be shown after the explanation).
+
+    <!-- post/tag/list.html -->
+    {{ with.Params.tags }}
+    <div class="tags-list">
+      Tags:
+      {{ $sort := sort . }}
+      {{ $links := apply $sort "partial" "post/tag/link" "." }}
+      {{ $clean := apply $links "chomp" "." }}
+      {{ delimit $clean ", " }}
+    </div>
+    {{ end }}
+
+In this version, we are now sorting the tags, converting them to links with "post/tag/link.html", cleaning off stray newlines, and joining them together in a delimited list for presentation. That can also be written as:
+
+    <!-- post/tag/list.html -->
+    {{ with.Params.tags }}
+    <div class="tags-list">
+      Tags:
+      {{ delimit (apply (apply (sort .) "partial" "post/tag/link" ".") "chomp" ".") ", " }}
+    </div>
+    {{ end }}
+
+`apply` does not work when receiving the sequence as an argument through a pipeline.

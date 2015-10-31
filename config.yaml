@@ -8,6 +8,11 @@ RSSUri: "feed.xml"
 MetaDataFormat: "yaml"
 hasCJKLanguage: true
 
+taxonomies:
+  tag: "tags"
+  category: "categories"
+  doc: "doc"
+
 menu:
   main:
     - Name: "文章列表"
@@ -35,7 +40,7 @@ menu:
       Weight: 2
       Identifier: "hugo-org-github"
       URL: "https://github.com/coderzh/gohugo.org"
-  doc:
+  doclink:
     - Name: "英文文档"
       Weight: 1
       Identifier: "doc-en"
@@ -44,7 +49,48 @@ menu:
       Weight: 2
       Identifier: "doc-cn"
       URL: "/doc/"
-
+  doc:
+    - Name: "快速开始"
+      Identifier: "getting started"
+      Weight: -100
+    - Name: "Hugo命令"
+      Identifier: "commands"
+      Weight: -95
+      URL: "/doc/commands/"
+    - Name: "内容(Content)"
+      Identifier: "content"
+      Weight: -90
+    - Name: "皮肤(Themes)"
+      Identifier: "themes"
+      Weight: -85
+    - Name: "模板(Templates)"
+      Identifier: "layout"
+      Weight: -80
+    - Name: "分类(Taxonomies)"
+      Identifier: "taxonomy"
+      Weight: -70
+    - Name: "其他"
+      Identifier: "extras"
+      Weight: -60
+    - Name: "工具"
+      Weight: -55
+      URL: "/doc/tools/"
+    - Name: "社区"
+      Identifier: "community"
+      Weight: -50
+    - Name: "指南"
+      Identifier: "tutorials"
+      Weight: -40
+    - Name: "讨论社区"
+      Parent: "community"
+      Weight: 150
+      URL: "http://discuss.gohugo.io"
+    - Name: "常见问题"
+      Identifier: "troubleshooting"
+      Weight: -30
+    - Name: "关于Hugo"
+      Identifier: "about"
+      Weight: -20
 
 params:
   Keywords: "Hugo, 博客, 中文, 文档, 皮肤, 示例, 搭建, 教程, 部署"

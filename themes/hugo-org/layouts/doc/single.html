@@ -1,7 +1,12 @@
 {{ partial "header.html" . }}
 
+<div class="container-fluid">
+
 <div class="row">
-    <div class="col-xs-12 col-sm-11 doc-main">
+    <div class="col-xs-12 col-sm-3">
+        {{ partial "menu.html" . }}
+    </div>
+    <div class="col-xs-12 col-sm-9 doc-main">
         <main role="main">
             <article>
                 <a id="title"></a>
@@ -11,8 +16,22 @@
                 </section>
             </article>
         </main>
+        <br />
+        {{ if .IsPage }}
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 text-center">
+                {{ with .GetParam "prev" }}
+                <a href="{{.}}">&lt; 上一篇</a>
+                {{ end }}
+            </div>
+            <div class="col-xs-6 col-sm-6 text-center">
+                {{ with .GetParam "next" }}
+                <a href="{{.}}">下一篇 &gt;</a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
     </div> 
-    {{ partial "sidebar-single.html" . }}
 </div>
 
 {{ partial "footer.html" . }}
