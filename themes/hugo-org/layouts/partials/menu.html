@@ -30,7 +30,7 @@
             {{ if .IsPage }}
             {{ $File := .File }}  {{with $File.Path }}
             <li>
-                <a href="https://github.com/coderzh/gohugo.org/edit/master/content/doc/{{ $File.Dir }}{{ $File.LogicalName }}" target="blank">
+                <a href="https://github.com/coderzh/gohugo.org/edit/master/content/{{ $File.Dir }}{{ $File.LogicalName }}" target="blank">
                 <i class='fa fa-edit'></i>修改此文章</a>
             </li>
             {{ end }}
