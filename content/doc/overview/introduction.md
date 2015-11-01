@@ -1,187 +1,56 @@
 ---
-date: 2013-07-01
+date: 2015-11-01
 linktitle: Introduction
 menu:
   doc:
-    name: Hugo介绍
+    name: 关于Hugo
     parent: getting started
 next: /doc/overview/quickstart
-title: Hugo介绍 
+title: 关于Hugo
 weight: 5
+
 ---
 
-## What is Hugo?
+## Hugo 介绍
 
-Hugo is a general-purpose website framework. Technically speaking, Hugo is
-a static site generator. This means that, unlike systems like WordPress,
-Ghost and Drupal, which run on your web server expensively building a page
-every time a visitor requests one, Hugo does the building when you create
-your content. Since websites are viewed far more often than they are
-edited, Hugo is optimized for website viewing while providing a great
-writing experience.
+[spf13](http://spf13.com) 对于 Hugo 的英文原版介绍地址在这，就不另行翻译了：[https://gohugo.io/overview/introduction/](https://gohugo.io/overview/introduction/)
 
-Sites built with Hugo are extremely fast and very secure. Hugo sites can
-be hosted anywhere, including [Heroku][], [GoDaddy][], [DreamHost][],
-[GitHub Pages][], [Google Cloud Storage][], [Amazon S3][] and [CloudFront][], and work well with CDNs.
-Hugo sites run without dependencies on expensive runtimes like Ruby,
-Python or PHP and without dependencies on any databases.
+原文大致意思是当前的静态网站生成工具对环境依赖过多，性能较差，于是使用 Go 语言写了一个静态网站生成器 Hugo 。不仅解决了环境依赖、性能较差的问题，还有使用简单、部署方便等诸多优点，通过 Liveload 实时刷新，极大的优化文章的写作体验。
 
-[Heroku]: https://www.heroku.com/
-[GoDaddy]: https://www.godaddy.com/
-[DreamHost]: http://www.dreamhost.com/
-[GitHub Pages]: https://pages.github.com/
-[Google Cloud Storage]: http://cloud.google.com/storage/
-[Amazon S3]: http://aws.amazon.com/s3/
-[CloudFront]: http://aws.amazon.com/cloudfront/ "Amazon CloudFront"
+## 关于翻译文档
 
-We think of Hugo as the ideal website creation tool. With nearly instant
-build times and the ability to rebuild whenever a change is made, Hugo
-provides a very fast feedback loop. This is essential when you are
-designing websites, but also very useful when creating content.
+本翻译文档目的是让 Hugo 在中国能得到更好的推广，让有需要和对 Hugo 感兴趣的人能从此文档中获得微薄帮助。
 
-## What makes Hugo different?
+此中文文档的英文原版皆从 Hugo 官方 GitHub 上来：
 
-Web site generators render content into HTML files. Most are "dynamic
-site generators." That means the HTTP
-server (which is the program running on your website that the user's
-browser talks to) runs the generator to create a new HTML file
-each and every time a user wants to view a page.
+[https://github.com/spf13/hugo/tree/v0.14.docs](https://github.com/spf13/hugo/tree/v0.14.docs)
 
-Creating the page dynamically means that the computer hosting
-the HTTP server has to have enough memory and CPU to effectively run
-the generator around the clock. If not, then the user has to wait
-in a queue for the page to be generated.
+取自 v0.14.0 版本，基于 revision: [acd6ad9](https://github.com/spf13/hugo/tree/acd6ad92c181cd7cdb485467cef0e8986911fb02)
 
-Nobody wants users to wait longer than needed, so the dynamic site
-generators programmed their systems to cache the HTML files. When
-a file is cached, a copy of it is temporarily stored on the computer.
-It is much faster for the HTTP server to send that copy the next time
-the page is requested than it is to generate it from scratch.
+翻译文档最麻烦的是能否跟上官方文档的更新， Hugo 官方文档目前虽在 v0.14.0 版本，但也经常有些更新，待本文档翻译完成之后，每隔一定的周期，根据本文所记录的 revision 对原文档进行 diff，然后补上更新内容。
 
-Hugo takes caching a step further. All HTML files are rendered on your
-computer. You can review the files before you copy them to the computer
-hosting the HTTP server. Since the HTML files aren't generated dynamically,
-we say that Hugo is a "static site generator."
+此次翻译我也希望借助社区之力，如果你对此有兴趣，请前往本站的 GitHub **提交一个 Issue，标题注明希望翻译的文档名称** 即可。
 
-Not running a web site generator on your HTTP server has many benefits.
-The most noticeable is performance - HTTP servers are very good at
-sending files. So good that you can effectively serve the same number
-of pages with a fraction of the memory and CPU needed for a dynamic site.
+Issue 提交地址： [https://github.com/coderzh/gohugo.org/issues](https://github.com/coderzh/gohugo.org/issues)
 
-Hugo has two components to help you build and test your web site. The
-one that you'll probably use most often is the built-in HTTP server.
-When you run `hugo server`, Hugo renders all of your content into
-HTML files and then runs a HTTP server on your computer so that you
-can see what the pages look like.
+待翻译文档路径： [https://github.com/coderzh/gohugo.org/tree/master/content/doc](https://github.com/coderzh/gohugo.org/tree/master/content/doc)
 
-The second component is used when you're ready to publish your web
-site to the computer running your website. Running Hugo without any
-actions will rebuild your entire web site using the `baseurl` setting
-from your site's configuration file. That's required to have your page
-links work properly with most hosting companies.
+然后 Fork 该 [Repo](https://github.com/coderzh/gohugo.org) ，通过 Pull Request 的方式提交过来便是，不胜感激。
 
-## How fast is Hugo?
+## Hugo 能做什么
 
-{{% youtube CdiDYZ51a2o %}}
+通过 Hugo 你可以快速搭建你的静态网站，比如博客系统、文档介绍、公司主页、产品介绍等等。相对于其他静态网站生成器来说，Hugo 具备如下特点：
 
-## What does Hugo do?
+  * 极快的页面编译生成速度。（ ~1&nbsp;ms 每页面）
+  * 完全跨平台支持，可以运行在 <i class="fa fa-apple"></i>&nbsp;Mac OS&nbsp;X, <i class="fa fa-linux"></i>&nbsp;Linux, <i class="fa fa-windows"></i>&nbsp;Windows, 以及更多!
+  * 安装方便 [Installation](/doc/overview/installing/)
+  * 本地调试 [Usage](/doc/overview/usage/) 时通过 [LiveReload](/doc/extras/livereload/) 自动即时刷新页面。
+  * 完全的皮肤支持。
+  * 可以部署在任何的支持 HTTP 的服务器上。
 
-In technical terms, Hugo takes a source directory of files and
-templates and uses these as input to create a complete website.
+## 从这里开始了解吧……
 
-Hugo boasts the following features:
-
-### General
-
-  * Extremely fast build times (~1&nbsp;ms per page)
-  * Completely cross platform: Runs on <i class="fa fa-apple"></i>&nbsp;Mac OS&nbsp;X, <i class="fa fa-linux"></i>&nbsp;Linux, <i class="fa fa-windows"></i>&nbsp;Windows, and more!
-  * Easy [installation](/doc/overview/installing/)
-  * Render changes [on the fly](/doc/overview/usage/) with [LiveReload](/doc/extras/livereload/) as you develop
-  * Complete theme support
-  * Host your site anywhere
-
-### Organization
-
-  * Straightforward [organization](/doc/content/organization/)
-  * Support for [website sections](/doc/content/sections/)
-  * Completely customizable [URLs](/doc/extras/urls/)
-  * Support for configurable [taxonomies](/doc/taxonomies/overview/) which includes categories and tags.  Create your own custom organization of content
-  * Ability to [sort content](/doc/content/ordering/) as you desire
-  * Automatic [table of contents](/doc/extras/toc/) generation
-  * Dynamic menu creation
-  * [Pretty URLs](/doc/extras/urls/) support
-  * [Permalink](/doc/extras/permalinks/) pattern support
-  * [Aliases](/doc/extras/aliases/) (redirects)
-
-### Content
-
-  * Native support for content written in [Markdown](/doc/content/example/)
-    * Support for other languages through _external helpers_, see [supported formats](/doc/content/supported-formats)
-  * Support for TOML, YAML and JSON metadata in [frontmatter](/doc/content/front-matter/)
-  * Completely [customizable homepage](/doc/layout/homepage/)
-  * Support for multiple [content types](/doc/content/types/)
-  * Automatic and user defined [summaries](/doc/content/summaries/)
-  * [Shortcodes](/doc/extras/shortcodes/) to enable rich content inside of Markdown
-  * ["Minutes to Read"](/doc/layout/variables/) functionality
-  * ["Wordcount"](/doc/layout/variables/) functionality
-
-### Additional Features
-
-  * Integrated [Disqus](https://disqus.com/) comment support
-  * Automatic [RSS](/doc/layout/rss/) creation
-  * Support for [Go](http://golang.org/pkg/html/template/), [Amber](https://github.com/eknkc/amber) and [Ace](http://ace.yoss.si/) HTML templates
-  * Syntax [highlighting](/doc/extras/highlighting/) powered by [Pygments](http://pygments.org/)
-
-See what's coming next in the [roadmap](/doc/meta/roadmap/).
-
-## Who should use Hugo?
-
-Hugo is for people that prefer writing in a text editor over
-a browser.
-
-Hugo is for people who want to hand code their own website without
-worrying about setting up complicated runtimes, dependencies and
-databases.
-
-Hugo is for people building a blog, company site, portfolio, tumblog,
-documentation, single page site or a site with thousands of
-pages.
-
-## Why did you write Hugo?
-
-I wrote Hugo ultimately for a few reasons. First, I was disappointed with
-WordPress, my then website solution. It rendered slowly. I couldn't create
-content as efficiently as I wanted to and needed to be online to write
-posts. The constant security updates and the horror stories of people's
-hacked blogs. I hated how content was written in HTML instead of the much
-simpler Markdown. Overall, I felt like it got in my way more than it helped
-me from writing great content.
-
-I looked at existing static site generators like [Jekyll][], [Middleman][] and [nanoc][].
-All had complicated dependencies to install and took far longer to render
-my blog with hundreds of posts than I felt was acceptable. I wanted
-a framework to be able to get rapid feedback while making changes to the
-templates, and the 5+-minute render times was just too slow. In general,
-they were also very blog minded and didn't have the ability to have
-different content types and flexible URLs.
-
-[Jekyll]: http://jekyllrb.com/
-[Middleman]: https://middlemanapp.com/
-[nanoc]: http://nanoc.ws/
-
-I wanted to develop a fast and full-featured website framework without
-dependencies. The [Go language][] seemed to have all of the features I needed
-in a language. I began developing Hugo in Go and fell in love with the
-language. I hope you will enjoy using (and contributing to) Hugo as much
-as I have writing it.
-
-[Go language]: http://golang.org/ "The Go Programming Language"
-
-## Next Steps
-
- * [Install Hugo](/doc/overview/installing/)
- * [Quick start](/doc/overview/quickstart/)
- * [Join the Mailing List](/doc/community/mailing-list/)
- * [Star us on GitHub](https://github.com/spf13/hugo)
- * [Discussion Forum](http://discuss.gohugo.io/)
+ * [安装 Hugo](/doc/overview/installing/)
+ * [快速开始](/doc/overview/quickstart/)
+ * [在GitHub上给个Star](https://github.com/coderzh/gohugo.org)
 
