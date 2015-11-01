@@ -1,6 +1,6 @@
 # GoHugo.org
 
-中文文档路径：[http://www.gohugo.org/doc/](http://www.gohugo.org/doc/)
+Hugo 中文文档： [http://www.gohugo.org/doc/](http://www.gohugo.org/doc/)
 
 ## Hugo 介绍
 
