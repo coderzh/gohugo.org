@@ -1,6 +1,6 @@
 # GoHugo.org
 
-Hugo 中文文档网站：[http://www.gohugo.org](http://www.gohugo.org)
+Hugo 中文文档网站：[http://www.gohugo.org/](http://www.gohugo.org/)
 
 ## Hugo 介绍
 
