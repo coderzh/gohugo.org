@@ -1,6 +1,6 @@
 # GoHugo.org
 
-Hugo 中文文档网站：[http://www.gohugo.org/](http://www.gohugo.org/)
+中文文档路径：[http://www.gohugo.org/doc/](http://www.gohugo.org/doc/)
 
 ## Hugo 介绍
 
@@ -8,9 +8,20 @@ Hugo 中文文档网站：[http://www.gohugo.org/](http://www.gohugo.org/)
 
 原文大致意思是当前的静态网站生成工具对环境依赖过多，性能较差，于是使用 Go 语言写了一个静态网站生成器 Hugo 。不仅解决了环境依赖、性能较差的问题，还有使用简单、部署方便等诸多优点，通过 Liveload 实时刷新，极大的优化文章的写作体验。
 
+### Hugo 能做什么
+
+通过 Hugo 你可以快速搭建你的静态网站，比如博客系统、文档介绍、公司主页、产品介绍等等。相对于其他静态网站生成器来说，Hugo 具备如下特点：
+
+  * 极快的页面编译生成速度。（ ~1&nbsp;ms 每页面）
+  * 完全跨平台支持，可以运行在 <i class="fa fa-apple"></i>&nbsp;Mac OS&nbsp;X, <i class="fa fa-linux"></i>&nbsp;Linux, <i class="fa fa-windows"></i>&nbsp;Windows, 以及更多!
+  * 安装方便 [Installation](http://www.gohugo.org/doc/overview/installing/)
+  * 本地调试 [Usage](http://www.gohugo.org/doc/overview/usage/) 时通过 [LiveReload](http://www.gohugo.org/doc/extras/livereload/) 自动即时刷新页面。
+  * 完全的皮肤支持。
+  * 可以部署在任何的支持 HTTP 的服务器上。
+
 ## 关于翻译文档
 
-本翻译文档目的是让 Hugo 在中国能得到更好的推广，让有需要和对 Hugo 感兴趣的人能从此文档中获得微薄帮助。
+中文翻译文档目的是让 Hugo 在中国能得到更好的推广，让有需要和对 Hugo 感兴趣的人能从此文档中获得微薄帮助。
 
 此中文文档的英文原版皆从 Hugo 官方 GitHub 上来：
 
@@ -27,17 +38,6 @@ Issue 提交地址： [https://github.com/coderzh/gohugo.org/issues](https://git
 待翻译文档路径： [https://github.com/coderzh/gohugo.org/tree/master/content/doc](https://github.com/coderzh/gohugo.org/tree/master/content/doc)
 
 然后 Fork 该 [Repo](https://github.com/coderzh/gohugo.org) ，通过 Pull Request 的方式提交过来便是，不胜感激。
-
-## Hugo 能做什么
-
-通过 Hugo 你可以快速搭建你的静态网站，比如博客系统、文档介绍、公司主页、产品介绍等等。相对于其他静态网站生成器来说，Hugo 具备如下特点：
-
-  * 极快的页面编译生成速度。（ ~1&nbsp;ms 每页面）
-  * 完全跨平台支持，可以运行在 <i class="fa fa-apple"></i>&nbsp;Mac OS&nbsp;X, <i class="fa fa-linux"></i>&nbsp;Linux, <i class="fa fa-windows"></i>&nbsp;Windows, 以及更多!
-  * 安装方便 [Installation](http://www.gohugo.org/doc/overview/installing/)
-  * 本地调试 [Usage](http://www.gohugo.org/doc/overview/usage/) 时通过 [LiveReload](http://www.gohugo.org/doc/extras/livereload/) 自动即时刷新页面。
-  * 完全的皮肤支持。
-  * 可以部署在任何的支持 HTTP 的服务器上。
 
 ## 从这里开始了解吧……
 
