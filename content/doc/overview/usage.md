@@ -2,12 +2,12 @@
 date: 2013-07-01
 menu:
   doc:
-    name: 使用Hugo
+    name: 使用 Hugo
     parent: getting started
 next: /doc/overview/configuration
 notoc: true
 prev: /doc/overview/installing
-title: Using Hugo
+title: 使用 Hugo
 weight: 30
 ---
 

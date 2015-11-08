@@ -3,10 +3,10 @@ date: 2015-11-01
 linktitle: Introduction
 menu:
   doc:
-    name: 关于Hugo
+    name: 关于 Hugo
     parent: getting started
 next: /doc/overview/quickstart
-title: 关于Hugo
+title: 关于 Hugo
 weight: 5
 
 ---
