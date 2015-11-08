@@ -2,77 +2,68 @@
 date: 2013-07-01
 menu:
   doc:
-    name: 安装Hugo
+    name: 安装 Hugo
     parent: getting started
 next: /doc/overview/usage
 prev: /doc/overview/quickstart
-title: Installing Hugo
+title: 安装 Hugo
 weight: 20
 ---
 
-Hugo is written in [Go][] with support for multiple platforms.
+Hugo 是用 [Go][] 语言写的，支持多个平台。
 
-The latest release can be found at [Hugo Releases](https://github.com/spf13/hugo/releases).
-We currently provide pre-built binaries for
+最新的 release 版本可以在 [Hugo Releases](https://github.com/spf13/hugo/releases) 找到。 我们提供预构建好的二进制包括
 <i class="fa fa-windows"></i>&nbsp;Windows,
 <i class="fa fa-linux"></i>&nbsp;Linux,
 <i class="fa freebsd-19px"></i>&nbsp;FreeBSD
-and <i class="fa fa-apple"></i>&nbsp;OS&nbsp;X (Darwin)
-for x64, i386 and ARM architectures.
+和 <i class="fa fa-apple"></i>&nbsp;OS&nbsp;X (Darwin)
+for x64, i386 和 ARM architectures.
 
-Hugo may also be compiled from source wherever the Go compiler tool chain can run, e.g. for other operating systems including DragonFly BSD, OpenBSD, Plan&nbsp;9 and Solaris.  See http://golang.org/doc/install/source for the full set of supported combinations of target operating systems and compilation architectures.
-
-## Installing Hugo (binary)
-
-Installation is very easy. Simply download the appropriate version for your
-platform from [Hugo Releases](https://github.com/spf13/hugo/releases).
-Once downloaded it can be run from anywhere. You don't need to install
-it into a global location. This works well for shared hosts and other systems
-where you don't have a privileged account.
-
-Ideally, you should install it somewhere in your `PATH` for easy use.
-`/usr/local/bin` is the most probable location.
-
-On OS&nbsp;X, if you have [Homebrew](http://brew.sh/), installation is even
-easier: just run `brew install hugo`.
-
-### Installing Pygments (optional)
-
-The Hugo executable has one *optional* external dependency for source code highlighting (Pygments).
-
-If you want to have source code highlighting using the [highlight shortcode](/doc/extras/highlighting/),
-you need to install the Python-based Pygments program. The procedure is outlined on the [Pygments home page](http://pygments.org/).
-
-## Upgrading Hugo
-
-Upgrading Hugo is as easy as downloading and replacing the executable you’ve
-placed in your `PATH`.
+你可以使用 Go 编译器工具链源码编译 Hugo，比如在其他的操作系统如 DragonFly BSD, OpenBSD, Plan&nbsp;9 和 Solaris 。
+在 http://golang.org/doc/install/source 查看完整的操作系统和编译架构的支持列表。
 
 
-## Installing from source
+## 安装 Hugo （二进制）
 
-### Prerequisite tools for downloading and building source code
+安装过程非常简单。只需要下载合适你系统版本的 [Hugo 二进制](https://github.com/spf13/hugo/releases) 。
+下载完毕后它可以在任何地方运行。你并不需要把它安装到一个全局的地方。这适用于共享一台主机和系统并且没有特别权限的账号的情况。
+
+更理想的是，为了更方便的使用，你应该把它安装到你的 `PATH` 环境变量所在的位置。
+
+在 OS&nbsp;X，如果你有 [Homebrew](http://brew.sh/) ，安装过程就更简单了：只需要运行 `brew install hugo` 。
+
+### 安装 Pygments （可选）
+
+Hugo 有一个 *可选的* 关于源代码高亮（Pygments）的额外依赖。
+
+如果你想要使用 [highlight shortcode](/doc/extras/highlighting/) 源代码高亮，
+你必须安装基于 Python 的 Pygments 程序。安装过程见 [Pygments home page](http://pygments.org/) 。
+
+## 升级 Hugo
+
+升级 Hugo 只需要简单的下载和替换之前你放在 `PATH` 路径的二进制文件。
+
+## 源码安装
+
+### 下载并源码编译的必备工具
 
 * [Git](http://git-scm.com/)
 * [Mercurial](http://mercurial.selenic.com/)
-* [Go][] 1.3+ (Go 1.4+ on Windows, see Go [Issue #8090](https://code.google.com/p/go/issues/detail?id=8090))
+* [Go][] 1.3+ (Go 1.4+ on Windows, 见 Go [Issue #8090](https://code.google.com/p/go/issues/detail?id=8090))
 
-### Get directly from GitHub
+### 直接从 GitHub 获取
 
     $ export GOPATH=$HOME/go
     $ go get -v github.com/spf13/hugo
 
-`go get` will then fetch Hugo and all its dependent libraries to your
-`$GOPATH/src` directory, and compile everything into the final `hugo`
-(or `hugo.exe`) executable, which you will find sitting in the
-`$GOPATH/bin/` directory, all ready to go!
+`go get` 将会获取 Hugo 以及所有依赖的库到你的 `$GOPATH/src` 目录，同时编译所有代码生成最终的 `hugo` （或 `hugo.exe`） 二进制文件，这就全部准备好了。
 
-You may run `go get` with the `-u` option to update Hugo's dependencies:
+你可以使用 `-u` 参数执行 `go get` 用来更新 Hugo 的所有依赖。
 
     $ go get -u -v github.com/spf13/hugo
 
-## Contributing
+## 贡献 Hugo
 
-Please see the [contributing guide](/doc/contributing/).
+请见： [贡献指引](/doc/community/contributing/) 。
 
 [Go]: http://golang.org/
