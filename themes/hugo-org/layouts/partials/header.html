@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="{{ $baseUrl }}/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ $baseUrl }}/css/bootstrap-theme.css">
         <link rel="stylesheet" href="{{ $baseUrl }}/css/font-awesome/css/font-awesome.min.css" />
-        {{ if eq .URL "/theme/" }}<link rel="stylesheet" href="{{ $baseUrl }}/css/theme.css">{{ end }}
+        {{ if or (eq .URL "/theme/") (eq .Section "theme") }}<link rel="stylesheet" href="{{ $baseUrl }}/css/theme.css">{{ end }}
         <link rel="stylesheet" href="{{ $baseUrl }}/css/hugo-org.css">
     </head>
 
