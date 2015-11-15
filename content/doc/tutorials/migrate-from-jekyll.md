@@ -11,36 +11,36 @@ title: Migrate to Hugo from Jekyll
 weight: 10
 ---
 
-## Move static content to `static`
-Jekyll has a rule that any directory not starting with `_` will be copied as-is to the `_site` output. Hugo keeps all static content under `static`. You should therefore move it all there.
-With Jekyll, something that looked like
+## 移动静态内容到 `static` 文件夹
+Jekyll 有一条规则，任何不以 `_` 开始的文件夹都会被原样复制到 `_site` 文件夹中。Hugo 把所有的静态内容放在 `static` 文件夹中。因此你需要把它们都移动到那里去。
+使用 Jekyll，看起来这样的路径
 
     ▾ <root>/
         ▾ images/
             logo.png
 
-should become
+应该变为
 
     ▾ <root>/
         ▾ static/
             ▾ images/
                 logo.png
 
-Additionally, you'll want any files that should reside at the root (such as `CNAME`) to be moved to `static`.
+另外，你也想要让那些放在根目录下的文件（比如 `CNAME`）也移动到 `static` 中。
 
-## Create your Hugo configuration file
-Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the [Hugo configuration documentation](/doc/overview/configuration/) for details.
+## 创建 Hugo 配置文件
+Hugo 可以 JSON、YAML 或者 TOML 格式读入你的配置。Hugo 也支持自定义参数的配置。详细内容可以参考 [Hugo 配置文档](/doc/overview/configuration/)。
 
-## Set your configuration publish folder to `_site`
-The default is for Jekyll to publish to `_site` and for Hugo to publish to `public`. If, like me, you have [`_site` mapped to a git submodule on the `gh-pages` branch](http://blog.blindgaenger.net/generate_github_pages_in_a_submodule.html), you'll want to do one of two alternatives:
+## 把发布文件夹配置为 `_site`
+Jekyll 的默认发布文件夹是 `_site`，而 Hugo 的是 `public`。如果，你和我一样，把 [`_site` 文件夹映射为 `gh-pages` 分支的 git 子模块](http://blog.blindgaenger.net/generate_github_pages_in_a_submodule.html)，下面两种方法，你需要做其中之一：
 
-1. Change your submodule to point to map `gh-pages` to public instead of `_site` (recommended).
+1. 修改指向 `gh-pages` 的子模块，由 `_site` 指向 public （推荐）。
 
         git submodule deinit _site
         git rm _site
         git submodule add -b gh-pages git@github.com:your-username/your-repo.git public
 
-2. Or, change the Hugo configuration to use `_site` instead of `public`.
+2. 或者，修改 Hugo 的配置，使用 `_site`，而不是 `public`。
 
         {
             ..
@@ -48,18 +48,18 @@ The default is for Jekyll to publish to `_site` and for Hugo to publish to `publ
             ..
         }
 
-## Convert Jekyll templates to Hugo templates
-That's the bulk of the work right here. The documentation is your friend. You should refer to [Jekyll's template documentation](http://jekyllrb.com/docs/templates/) if you need to refresh your memory on how you built your blog and [Hugo's template](/doc/layout/templates/) to learn Hugo's way.
+## 把 Jekyll 模板转换为 Hugo 的模板
+主要工作就在这里。文档是你的朋友。如果你需要重新记起如何构建博客的话，应该参考 [Jekyll 模板文档](http://jekyllrb.com/docs/templates/) 并参考 [Hugo 模板](/doc/layout/templates/) 来学习 Hugo 的方式。
 
-As a single reference data point, converting my templates for [heyitsalex.net](http://heyitsalex.net/) took me no more than a few hours.
+作为一个参考数据，为 [heyitsalex.net](http://heyitsalex.net/) 转换模板花费我不超过几个小时的时间。
 
-## Convert Jekyll plugins to Hugo shortcodes
-Jekyll has [plugins](http://jekyllrb.com/docs/plugins/); Hugo has [shortcodes](/doc/shortcodes/). It's fairly trivial to do a port.
+## 把 Jekyll 插件转换为 Hugo 的短代码 
+Jekyll 有[插件](http://jekyllrb.com/docs/plugins/)；Hugo 有[短代码](/doc/shortcodes/)。转换是非常琐碎的。
 
-### Implementation
-As an example, I was using a custom [`image_tag`](https://github.com/alexandre-normand/alexandre-normand/blob/74bb12036a71334fdb7dba84e073382fc06908ec/_plugins/image_tag.rb) plugin to generate figures with caption when running Jekyll. As I read about shortcodes, I found Hugo had a nice built-in shortcode that does exactly the same thing.
+### 实现
+作为一个例子，我使用一个自定义的 [`image_tag`](https://github.com/alexandre-normand/alexandre-normand/blob/74bb12036a71334fdb7dba84e073382fc06908ec/_plugins/image_tag.rb) 插件，在运行 Jekyll 时生成带标题的图片。当我阅读短代码的时候，我发现 Hugo 有一个内建的好用的短代码，可以完成同样的功能。
 
-Jekyll's plugin:
+Jekyll 的插件：
 
     module Jekyll
       class ImageTag < Liquid::Tag
@@ -115,7 +115,7 @@ Jekyll's plugin:
     end
     Liquid::Template.register_tag('image', Jekyll::ImageTag)
 
-is written as this Hugo shortcode:
+写成 Hugo 的短代码是这种形式：
 
     <!-- image -->
     <figure {{ with .Get "class" }}class="{{.}}"{{ end }}>
@@ -136,23 +136,23 @@ is written as this Hugo shortcode:
     </figure>
     <!-- image -->
 
-### Usage
-I simply changed:
+### 使用
+我简单的修改：
 
     {% image full http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg "One of my favorite touristy-type photos. I secretly waited for the good light while we were "having fun" and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing." ->http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/ %}
 
-to this (this example uses a slightly extended version named `fig`, different than the built-in `figure`):
+成这个样子（这个例子使用了扩展版本的命名 `fig`，和内建的 `figure` 不同）：
 
     {{%/* fig class="full" src="http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg" title="One of my favorite touristy-type photos. I secretly waited for the good light while we were having fun and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing." link="http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/" */%}}
 
-As a bonus, the shortcode named parameters are, arguably, more readable.
+这么做的好处是，命名参数的短代码，相对而言，更加易读。
 
-## Finishing touches
-### Fix content
-Depending on the amount of customization that was done with each post with Jekyll, this step will require more or less effort. There are no hard and fast rules here except that `hugo server --watch` is your friend. Test your changes and fix errors as needed.
+## 收尾工作
+### 修改内容
+依据 Jekyll 生成的每篇博文的自定义数量，这个步骤将或多或少需要一些精力。除了 `hugo server --watch` 是你的朋友外，没有其他直接快速的规则。测试你的修改，并根据需要修改错误。
 
-### Clean up
-You'll want to remove the Jekyll configuration at this point. If you have anything else that isn't used, delete it.
+### 清除
+这时你将需要移除 Jekyll 的配置。如果还有其他不再使用的东西，也删除掉。
 
-## A practical example in a diff
-[Hey, it's Alex](http://heyitsalex.net/) was migrated in less than a _father-with-kids day_ from Jekyll to Hugo. You can see all the changes (and screw-ups) by looking at this [diff](https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610).
+## 一个 diff 形式的实际例子
+[Hey, it's Alex](http://heyitsalex.net/) 从 Jekyll 移植到 Hugo 花费了不到一个_带孩子的爸爸的一天_。查看这个 [diff](https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610)，你可以看到所有的修改（和所犯的错误）。
