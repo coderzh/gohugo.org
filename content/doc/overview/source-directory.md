@@ -7,15 +7,13 @@ menu:
 next: /doc/content/organization
 notoc: true
 prev: /doc/overview/configuration
-title: Source Organization
+title: 源文件组织
 weight: 50
 ---
 
-Hugo takes a single directory and uses it as the input for creating a complete
-website.
+Hugo 使用一个单一的目录用来生成完整的站点。
 
-
-The top level of a source directory will typically have the following elements:
+源目录的顶层一般有以下一些元素：
 
     ▸ archetypes/
     ▸ content/
@@ -25,7 +23,7 @@ The top level of a source directory will typically have the following elements:
     ▸ themes/
       config.toml
 
-Learn more about the different directories and what their purpose is:
+学习更多这些不同的目录和他们的目的：
 
 * [config](/doc/overview/configuration/)
 * [data](/doc/extras/datafiles/)
@@ -36,9 +34,9 @@ Learn more about the different directories and what their purpose is:
 * [themes](/doc/themes/overview/)
 
 
-## Example
+## 例子
 
-An example directory may look like:
+一个目录的例子：
 
     .
     ├── config.toml
@@ -85,8 +83,8 @@ An example directory may look like:
         ├── css
         └── js
 
-This directory structure tells us a lot about this site:
+这个目录结构告诉了我们一些关于这个站点的信息：
 
-1. The website intends to have two different types of content: *posts* and *quotes*.
-2. It will also apply two different taxonomies to that content: *categories* and *tags*.
-3. It will be displaying content in 3 different views: a list, a summary and a full page view.
+1. 这个网站打算有两个不同类型的文章内容：*posts* 和 *quotes* 。
+2. 它将在文章内容里应用两个不同的分类：*categories* 和 *tags* 。
+3. 它将在三种不同的视图里呈现这些内容：列表、摘要和完整的内容。

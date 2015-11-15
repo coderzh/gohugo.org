@@ -8,31 +8,26 @@ menu:
 next: /doc/overview/source-directory
 notoc: true
 prev: /doc/overview/usage
-title: Configuring Hugo
+title: 配置 Hugo
 weight: 40
 ---
 
-The directory structure and templates provide the majority of the
-configuration for a site. In fact, a config file isn't even needed for many
-websites since the defaults follow commonly used patterns.
+通常的使用情况下，一个网站并不需要一个配置文件，因为它的目录结构和模板就提供了主要的配置。
 
-Hugo expects to find the config file in the root of the source directory and
-will look there first for a `config.toml` file. If none is present, it will
-then look for a `config.yaml` file, followed by a `config.json` file.
+Hugo 需要在源目录查找一个 `config.toml` 的配置文件。如果这个文件不存在，将会查找 `config.yaml`，然后是 `config.json` 。
 
-The config file is a site-wide config. The config file provides directions to
-hugo on how to build the site as well as site-wide parameters and menus.
+这个配置文件是一个整站的配置。它给 Hugo 提供了如何构建站点的方式，比如全局的参数和菜单。
 
-## Examples
+## 示例
 
-The following is an example of a typical yaml config file:
+下面是一个典型的 yaml 格式的配置文件的示例：
 
     ---
     baseurl: "http://yoursite.example.com/"
     ...
 
-The following is an example of a toml config file with some of the default values.
-Values under `[params]` will populate the `.Site.Params` variable for use in templates:
+下面是一个 toml 格式的带了一些默认值的配置文件。
+在 `[params]` 下面的值将会构成模板里的 `.Site.Params` 变量：
 
     contentdir = "content"
     layoutdir = "layouts"
@@ -49,7 +44,7 @@ Values under `[params]` will populate the `.Site.Params` variable for use in tem
       description = "Tesla's Awesome Hugo Site"
       author = "Nikola Tesla"
 
-Here is a yaml configuration file which sets a few more options:
+这是一个 yaml 格式的配置文件，设置了一些更多的选项：
 
     ---
     baseurl: "http://yoursite.example.com/"
@@ -67,87 +62,87 @@ Here is a yaml configuration file which sets a few more options:
       SidebarRecentLimit: 5
     ...
 
-## Configuration variables
+## 配置变量
 
-Following is a list of Hugo-defined variables that you can configure and their current default values:
+下面是 Hugo 定义好的变量列表，以及他们的默认值，你可以设置他们：
 
     ---
     archetypedir:               "archetype"
-    # hostname (and path) to the root eg. http://spf13.com/
+    # 根路径，比如： http://spf13.com/
     baseURL:                    ""
-    # include content marked as draft
+    # 包含标记了 draft 的内容
     buildDrafts:                false
-    # include content with publishdate in the future
+    # 包含 publishdate 是 future 的内容
     buildFuture:                false
-    # enable this to make all relative URLs relative to content root. Note that this does not affect absolute URLs.
+    # 让所有相对路径的 URL 相对于你的内容的根路径。注意这个选项不会影响绝对路径。
     relativeURLs:               false
     canonifyURLs:               false
-    # config file (default is path/config.yaml|json|toml)
+    # 配置文件 (默认是 path/config.yaml|json|toml)
     config:                     "config.toml"
     contentdir:                 "content"
     dataDir:                    "data"
     defaultExtension:           "html"
     defaultLayout:              "post"
-    # filesystem path to write files to
+    # 生成文件目标位置
     destination:                ""
     disableLiveReload:          false
-    # Do not build RSS files
+    # 不生成 RSS 文件
     disableRSS:                 false
-    # Do not build Sitemap file
+    # 不生成 Sitemap 文件
     disableSitemap:             false
-    # edit new content with this editor, if provided
+    # 如果提供了，生成新文章时将使用这个编辑器
     editor:                     ""
     footnoteAnchorPrefix:       ""
     footnoteReturnLinkContents: ""
     languageCode:               ""
     layoutdir:                  "layouts"
-    # Enable Logging
+    # 开启日志
     log:                        false
-    # Log File path (if set, logging enabled automatically)
+    # 日志路径（如果设置了，默认开启日志）
     logFile:                    ""
     # "yaml", "toml", "json"
     metaDataFormat:             "toml"
     newContentEditor:           ""
-    # Don't sync modification time of files
+    # 不要同步文件的修改时间
     noTimes:                    false
     paginate:                   10
     paginatePath:               "page"
     permalinks:
-    # Pluralize titles in lists using inflect
+    # Pluralize titles in lists using inflect(不太明白)
     pluralizeListTitles:         true
     publishdir:                 "public"
-    # color-codes for highlighting derived from this style
+    # 代码高亮的样式
     pygmentsStyle:              "monokai"
-    # true: use pygments-css or false: color-codes directly
+    # ture: 使用 pygments-css，false: 直接使用 color-codes（不使用 css ）
     pygmentsUseClasses:         false
-    # default sitemap configuration map
+    # 默认的站点地图
     sitemap:
-    # filesystem path to read files relative from
+    # 源文件在文件系统的路径
     source:                     ""
     staticdir:                  "static"
-    # display memory and timing of different steps of the program
+    # 显示程序在不同步骤的内存和耗时的分析
     stepAnalysis:               false
-    # theme to use (located in /themes/THEMENAME/)
+    # 使用哪个皮肤 (路径在 /themes/THEMENAME/)
     theme:                      ""
     title:                      ""
-    # if true, use /filename.html instead of /filename/
+    # 如果是 true ，使用 /filename.html 代替 /filename/
     uglyURLs:                   false
-    # verbose output
+    # 详细的输出
     verbose:                    false
-    # verbose logging
+    # 输出详细的日志
     verboseLog:                 false
-    # watch filesystem for changes and recreate as needed
+    # 监控文件变化并重新生成
     watch:                      false
     ---
 
 
 
 
-## Configure Blackfriday rendering
+## 设置 Blackfriday 渲染
 
-[Blackfriday](https://github.com/russross/blackfriday) is the [Markdown](http://daringfireball.net/projects/markdown/) rendering engine used in Hugo. The Blackfriday configuration in Hugo is mostly a set of sane defaults that should fit most use cases.
+[Blackfriday](https://github.com/russross/blackfriday) 是 Hugo 中使用的 [Markdown](http://daringfireball.net/projects/markdown/) 渲染引擎。 Hugo 中的 Blackfriday 的默认设置已经很健全，可以适用于大多数的情况。
 
-But Hugo does expose some options---as listed in the table below, matched with the corresponding flag in the Blackfriday source ([html.go](https://github.com/russross/blackfriday/blob/master/html.go) and [markdown.go](https://github.com/russross/blackfriday/blob/master/markdown.go)):
+但是同时 Hugo 还提供了一些选项 --- 正如下面的表格里的所示的， 对应于 Blackfriday 源码里的选项。  ([html.go](https://github.com/russross/blackfriday/blob/master/html.go) 和 [markdown.go](https://github.com/russross/blackfriday/blob/master/markdown.go)):
 
 <table class="table table-bordered">
 <thead>
@@ -219,7 +214,7 @@ but only these three.</small></td>
 </table>
 
 
-**Note** that these flags must be grouped under the `blackfriday` key and can be set on **both site and page level**. If set on page, it will override the site setting.  Example:
+**注意** 这些选项必须在 `blackfriday` 项下面，可以 **同时用在 site 和 page 级别** 。如果在 page 级别设置了，将会覆盖 site 上的设置。比如：
 
 <table class="table">
 <thead>
@@ -246,8 +241,8 @@ but only these three.</small></td>
 </tbody>
 </table>
 
-## Notes
+## 说明
 
-Config changes are not reflected with [LiveReload](/doc/extras/livereload/).
+修改配置对于 [LiveReload](/doc/extras/livereload/) 来说是没反应的。
 
-Please restart `hugo server --watch` whenever you make a config change.
+当你修改配置时，请重启 `hugo server --watch` 。 
