@@ -12,7 +12,7 @@ import subprocess
 __author__ = 'coderzh'
 
 GIT_REPO = [
-    ['origin',  'gh-pages', 'git@github.com:coderzh/gohugo.org.git'],
+    ['origin',  'gh-pages', 'git@github.com:coderzh/gohugo-deployed.git'],
     ['gitcafe', 'gh-pages', 'git@gitcafe.com:coderzh/gohugo.org.git'],
 ]
 
