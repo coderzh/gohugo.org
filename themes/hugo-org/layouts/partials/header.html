@@ -38,7 +38,7 @@
                 <ul class="nav navbar-nav">
                     <li {{ if eq $isHomePage true }}class="active"{{ end }}><a href="{{ $baseUrl }}/">主页</a></li>
                     {{ $url := .URL}}
-                    {{ range .Site.Menus.main }}
+                    {{ range .Site.Menus.home}}
                     <li {{ if eq $url .URL }}class="active"{{ end }}><a href="{{ .URL }}">{{ .Name }}</a></li>
                     {{ end }}
                     <li class="dropdown">

@@ -1,13 +1,17 @@
 ---
+aliases:
+- /doc/installing/
 date: 2013-07-01
+lastmod: 2016-01-04
+linktitle: Installing Hugo
 menu:
-  doc:
-    name: 安装 Hugo
+  main:
     parent: getting started
 next: /doc/overview/usage
 prev: /doc/overview/quickstart
 title: 安装 Hugo
 weight: 20
+translated: true
 ---
 
 Hugo 是用 [Go][] 语言写的，支持多个平台。

@@ -1,14 +1,14 @@
 ---
-date: 2015-11-01
+date: 2013-07-01
+lastmod: 2016-02-20
 linktitle: Introduction
 menu:
-  doc:
-    name: 关于 Hugo
+  main:
     parent: getting started
 next: /doc/overview/quickstart
 title: 关于 Hugo
 weight: 5
-
+translated: true
 ---
 
 ## Hugo 介绍
@@ -21,13 +21,11 @@ weight: 5
 
 本翻译文档目的是让 Hugo 在中国能得到更好的推广，让有需要和对 Hugo 感兴趣的人能从此文档中获得微薄帮助。
 
-此中文文档的英文原版皆从 Hugo 官方 GitHub 上来：
+此中文文档翻译自官方最新的 `v0.15` 版本：
 
-[https://github.com/spf13/hugo/tree/v0.14.docs](https://github.com/spf13/hugo/tree/v0.14.docs)
+[https://github.com/spf13/hugo/tree/v0.15.docs](https://github.com/spf13/hugo/tree/v0.15.docs)
 
-取自 v0.14.0 版本，基于 revision: [acd6ad9](https://github.com/spf13/hugo/tree/acd6ad92c181cd7cdb485467cef0e8986911fb02)
-
-翻译文档最麻烦的是能否跟上官方文档的更新， Hugo 官方文档目前虽在 v0.14.0 版本，但也经常有些更新，待本文档翻译完成之后，每隔一定的周期，根据本文所记录的 revision 对原文档进行 diff，然后补上更新内容。
+翻译文档最麻烦的是能否跟上官方文档的更新，于是我做了一个自动与官方最新版本生成 diff 的 Go 脚本，具体如何使用稍后放出。
 
 此次翻译我也希望借助社区之力，如果你对此有兴趣，请前往本站的 GitHub **提交一个 Issue，标题注明希望翻译的文档名称** 即可。
 
@@ -35,7 +33,7 @@ Issue 提交地址： [https://github.com/coderzh/gohugo.org/issues](https://git
 
 待翻译文档路径： [https://github.com/coderzh/gohugo.org/tree/master/content/doc](https://github.com/coderzh/gohugo.org/tree/master/content/doc)
 
-然后 Fork 该 [Repo](https://github.com/coderzh/gohugo.org) ，通过 Pull Request 的方式提交过来便是，不胜感激。
+然后 Fork 该 [Repo](https://github.com/coderzh/gohugo.org) ，通过 Pull Request 的方式提交过来便是。
 
 ## Hugo 能做什么
 

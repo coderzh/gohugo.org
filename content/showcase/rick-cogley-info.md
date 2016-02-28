@@ -1,4 +1,5 @@
 ---
+lastmod: 2016-02-01
 date: 2015-05-20T04:32:00Z
 description: Rick Cogley's personal site, powered by Hugo.
 license: MIT
@@ -10,6 +11,6 @@ tags:
 - blog
 - rickcogley
 - japan
-thumbnail: /img/rick_cogley_info-tn.png
+thumbnail: /img/rick_cogley_info-tn.jpg
 title: rick.cogley.info
 ---

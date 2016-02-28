@@ -2,10 +2,10 @@
 <aside>
     <div class="well">
         <!-- sidebar menu start-->
-        <div class="pull-right">Hugo v0.14.0(翻译中...)</div>
+        <div class="pull-right">Hugo v0.15.0(翻译中...)</div>
         <ul class="nav nav-list">
             {{ $currentNode := . }}
-            {{ range .Site.Menus.doc }}
+            {{ range .Site.Menus.main }}
             {{ if .HasChildren }}
             <li>
                 <label class="tree-toggle nav-header">{{ .Name }}</label>

@@ -1,15 +1,18 @@
 ---
+aliases:
+- /doc/configuration/
 date: 2013-07-01
+lastmod: 2016-01-02
 linktitle: Configuration
 menu:
-  doc:
-    name: 配置文件
+  main:
     parent: getting started
 next: /doc/overview/source-directory
 notoc: true
 prev: /doc/overview/usage
 title: 配置 Hugo
 weight: 40
+translated: true
 ---
 
 通常的使用情况下，一个网站并不需要一个配置文件，因为它的目录结构和模板就提供了主要的配置。
@@ -35,11 +38,11 @@ Hugo 需要在源目录查找一个 `config.toml` 的配置文件。如果这个
     builddrafts = false
     baseurl = "http://yoursite.example.com/"
     canonifyurls = true
-    
+
     [taxonomies]
       category = "categories"
       tag = "tags"
-    
+
     [params]
       description = "Tesla's Awesome Hugo Site"
       author = "Nikola Tesla"
@@ -68,73 +71,89 @@ Hugo 需要在源目录查找一个 `config.toml` 的配置文件。如果这个
 
     ---
     archetypedir:               "archetype"
-    # 根路径，比如： http://spf13.com/
+    # hostname (and path) to the root, e.g. http://spf13.com/
     baseURL:                    ""
-    # 包含标记了 draft 的内容
+    # include content marked as draft
     buildDrafts:                false
-    # 包含 publishdate 是 future 的内容
+    # include content with publishdate in the future
     buildFuture:                false
-    # 让所有相对路径的 URL 相对于你的内容的根路径。注意这个选项不会影响绝对路径。
+    # enable this to make all relative URLs relative to content root. Note that this does not affect absolute URLs.
     relativeURLs:               false
     canonifyURLs:               false
-    # 配置文件 (默认是 path/config.yaml|json|toml)
+    # config file (default is path/config.yaml|json|toml)
     config:                     "config.toml"
     contentdir:                 "content"
     dataDir:                    "data"
     defaultExtension:           "html"
     defaultLayout:              "post"
-    # 生成文件目标位置
-    destination:                ""
     disableLiveReload:          false
-    # 不生成 RSS 文件
+    # Do not build RSS files
     disableRSS:                 false
-    # 不生成 Sitemap 文件
+    # Do not build Sitemap file
     disableSitemap:             false
-    # 如果提供了，生成新文章时将使用这个编辑器
+    # edit new content with this editor, if provided
     editor:                     ""
     footnoteAnchorPrefix:       ""
     footnoteReturnLinkContents: ""
+    # google analytics tracking id
+    googleAnalytics:            ""
     languageCode:               ""
     layoutdir:                  "layouts"
-    # 开启日志
+    # Enable Logging
     log:                        false
-    # 日志路径（如果设置了，默认开启日志）
+    # Log File path (if set, logging enabled automatically)
     logFile:                    ""
     # "yaml", "toml", "json"
     metaDataFormat:             "toml"
     newContentEditor:           ""
-    # 不要同步文件的修改时间
+    # Don't sync modification time of files
     noTimes:                    false
     paginate:                   10
     paginatePath:               "page"
     permalinks:
-    # Pluralize titles in lists using inflect(不太明白)
-    pluralizeListTitles:         true
+    # Pluralize titles in lists using inflect
+    pluralizeListTitles:        true
+    # Preserve special characters in taxonomy names ("Gérard Depardieu" vs "Gerard Depardieu")
+    preserveTaxonomyNames:      false
+    # filesystem path to write files to
     publishdir:                 "public"
-    # 代码高亮的样式
+    # color-codes for highlighting derived from this style
     pygmentsStyle:              "monokai"
-    # ture: 使用 pygments-css，false: 直接使用 color-codes（不使用 css ）
+    # true: use pygments-css or false: color-codes directly
     pygmentsUseClasses:         false
-    # 默认的站点地图
+    # default sitemap configuration map
     sitemap:
-    # 源文件在文件系统的路径
+    # filesystem path to read files relative from
     source:                     ""
     staticdir:                  "static"
-    # 显示程序在不同步骤的内存和耗时的分析
+    # display memory and timing of different steps of the program
     stepAnalysis:               false
-    # 使用哪个皮肤 (路径在 /themes/THEMENAME/)
+    # theme to use (located in /doc/themes/THEMENAME/)
     theme:                      ""
     title:                      ""
-    # 如果是 true ，使用 /filename.html 代替 /filename/
+    # if true, use /filename.html instead of /filename/
     uglyURLs:                   false
-    # 详细的输出
+    # Do not make the url/path to lowercase
+    disablePathToLower:         false
+    # if true, auto-detect Chinese/Japanese/Korean Languages in the content. (.Summary and .WordCount can work properly in CJKLanguage)
+    hasCJKLanguage              false
+    # verbose output
     verbose:                    false
-    # 输出详细的日志
+    # verbose logging
     verboseLog:                 false
-    # 监控文件变化并重新生成
-    watch:                      false
+    # watch filesystem for changes and recreate as needed
+    watch:                      true
     ---
 
+## 编译时忽略的文件
+
+使用 `hugo` 编译时，将忽略 `config.toml` 文件中指定的内容，比如：以 `.foo` 和 `.boo` 结尾的文件。
+
+```
+ignoreFiles = [ "\\.foo$", "\\.boo$" ]
+```
+
+上面使用了正则表达式，使用 `\` 转义是因为在 TOML 里。
 
 
 
@@ -152,6 +171,17 @@ Hugo 需要在源目录查找一个 `config.toml` 的配置文件。如果这个
 </thead>
 
 <tbody>
+<tr>
+<td><code><strong>smartypants</strong></code></td>
+<td><code>true</code></td>
+<td><code>HTML_USE_SMARTYPANTS</code></td>
+</tr>
+<tr>
+<td class="purpose-title">Purpose:</td>
+<td class="purpose-description" colspan="2">Enable/Disable smart punctuation substitutions such as smart quotes, smart dashes, etc.
+May be fine-tuned with the <code>angledQuotes</code>, <code>fractions</code>, <code>smartDashes</code> and <code>latexDashes</code> flags below.</td>
+</tr>
+
 <tr>
 <td><code><strong>angledQuotes</strong></code></td>
 <td><code>false</code></td>
@@ -179,7 +209,42 @@ but only these three.</small></td>
 </tr>
 
 <tr>
-<td><code><strong>plainIdAnchors</strong></code></td>
+<td><code><strong>smartDashes</strong></code></td>
+<td><code>true</code></td>
+<td><code>HTML_SMARTYPANTS_DASHES</code></td>
+</tr>
+<tr>
+<td class="purpose-title">Purpose:</td>
+<td class="purpose-description" colspan="2">Enable/Disable smart dashes, i.e. turning hyphens into en&nbsp;dash or em&nbsp;dash.<br>
+Its behavior can be modified with the <code>latexDashes</code> flag listed below.</td>
+</tr>
+
+<tr>
+<td><code><strong>latexDashes</strong></code></td>
+<td><code>true</code></td>
+<td><code>HTML_SMARTYPANTS_LATEX_DASHES</code></td>
+</tr>
+<tr>
+<td class="purpose-title">Purpose:</td>
+<td class="purpose-description" colspan="2">Choose between LaTeX-style smart dashes and “conventional” smart dashes.<br>
+<strong>If <code>true</code>,</strong> <code>--</code> is translated into “&ndash;” (<code>&amp;ndash;</code>), and <code>---</code> is translated into “&mdash;” (<code>&amp;mdash;</code>).<br>
+<strong>If <code>false</code>,</strong> <code>--</code> is translated into “&mdash;” (<code>&amp;mdash;</code>), whereas a <em>spaced</em> single hyphen between two words is turned into an en&nbsp;dash, e.g.&nbsp;<code>12 June - 3 July</code> becomes <code>12 June &amp;ndash; 3 July</code>.</td>
+</tr>
+
+<tr style="height: 0.5em;"></tr>
+
+<tr>
+<td><code><strong>hrefTargetBlank</strong></code></td>
+<td><code>false</code></td>
+<td><code>HTML_HREF_TARGET_BLANK</code></td>
+</tr>
+<tr>
+<td class="purpose-title">Purpose:</td>
+<td class="purpose-description" colspan="2">Open external links in a new window/tab.</td>
+</tr>
+
+<tr>
+<td><code><strong>plainIDAnchors</strong></code></td>
 <td><code>false</code></td>
 <td><code>FootnoteAnchorPrefix</code> and <code>HeaderIDSuffix</code></td>
 </tr>
@@ -188,6 +253,8 @@ but only these three.</small></td>
 <td class="purpose-description" colspan="2">If <code>true</code>, then header and footnote IDs are generated without the document ID.<br>
 <small><strong>Example:</strong>&nbsp;<code>#my-header</code> instead of <code>#my-header:bec3ed8ba720b9073ab75abcf3ba5d97</code>.</small></td>
 </tr>
+
+<tr style="height: 0.5em;"></tr>
 
 <tr>
 <td><code><strong>extensions</strong></code></td>
@@ -214,7 +281,10 @@ but only these three.</small></td>
 </table>
 
 
-**注意** 这些选项必须在 `blackfriday` 项下面，可以 **同时用在 site 和 page 级别** 。如果在 page 级别设置了，将会覆盖 site 上的设置。比如：
+**注意**
+
+1. 这些 flags 是非常大小写敏感的！（Hugo v0.15版本）
+2. 这些选项必须在 `blackfriday` 项下面，可以 **同时用在 site 和 page 级别** 。如果在 page 级别设置了，将会覆盖 site 上的设置。比如：
 
 <table class="table">
 <thead>
@@ -227,22 +297,16 @@ but only these three.</small></td>
 <td style="width: 50%;"><pre><code>[blackfriday]
   angledQuotes = true
   fractions = false
-  plainIdAnchors = true
+  plainIDAnchors = true
   extensions = ["hardLineBreak"]
 </code></pre></td>
 <td><pre><code>blackfriday:
   angledQuotes: true
   fractions: false
-  plainIdAnchors: true
+  plainIDAnchors: true
   extensions:
     - hardLineBreak
 </code></pre></td>
 </tr>
 </tbody>
 </table>
-
-## 说明
-
-修改配置对于 [LiveReload](/doc/extras/livereload/) 来说是没反应的。
-
-当你修改配置时，请重启 `hugo server --watch` 。 

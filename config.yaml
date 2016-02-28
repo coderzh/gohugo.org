@@ -14,7 +14,7 @@ taxonomies:
   doc: "doc"
 
 menu:
-  main:
+  home:
     - Name: "文章列表"
       Weight: 1
       Identifier: "post"
@@ -49,7 +49,7 @@ menu:
       Weight: 2
       Identifier: "doc-cn"
       URL: "/doc/"
-  doc:
+  main:
     - Name: "快速开始"
       Identifier: "getting started"
       Weight: -100

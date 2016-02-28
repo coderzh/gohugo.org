@@ -12,3 +12,6 @@ syncFolders*
 /refs
 /index
 /logs
+*.swp
+/originhugo
+*.iml
