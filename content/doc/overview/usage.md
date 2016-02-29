@@ -11,9 +11,10 @@ notoc: true
 prev: /doc/overview/installing
 title: Using Hugo
 weight: 30
+translated: true
 ---
 
-Make sure either `hugo` is in your `PATH` or provide a path to it.
+确保 `Hugo` 在你的 `PATH` 路径下或者提供一个它的路径。
 
 {{< nohighlight >}}$ hugo help
 
@@ -68,9 +69,9 @@ Additional help topics:
 Use "hugo help [command]" for more information about a command.
 {{< /nohighlight >}}
 
-## Common Usage Example
+## 一般用法
 
-The most common use is probably to run `hugo` with your current directory being the input directory:
+最常见的用法是在你的当前站点目录里执行 `hugo` ：
 
 {{< nohighlight >}}$ hugo
 0 draft content
@@ -82,14 +83,13 @@ The most common use is probably to run `hugo` with your current directory being 
 in 120 ms
 {{< /nohighlight >}}
 
-This generates your web site to the `public/` directory,
-ready to be deployed to your web server.
+你的站点将会生成到 `public` 目录，用来部署到你的 Web 服务器。
 
 
-## Instant feedback as you develop your web site
+## 开发你的站点时获得实时的反馈
 
-If you are working on things and want to see the changes immediately, tell Hugo to watch for changes.
-Hugo will watch the filesystem for changes, and rebuild your site as soon as a file is saved:
+如果你想立即查看到新的内容改动，告诉 Hugo 让它监控这些改动。
+Hugo 将会监控文件系统的变化，在文件保存时会立即重新构建你的站点：
 
 {{< nohighlight >}}$ hugo -s ~/Code/hugo/docs
 0 draft content
@@ -103,10 +103,9 @@ Watching for changes in /Users/spf13/Code/hugo/docs/content
 Press Ctrl+C to stop
 {{< /nohighlight >}}
 
-Hugo can even run a server and create a site preview at the same time!
-Hugo implements [LiveReload](/doc/extras/livereload/) technology to automatically
-reload any open pages in all JavaScript-enabled browsers, including mobile.
-This is the easiest and most common way to develop a Hugo web site:
+Hugo 甚至可以运行一个 Server ，并且同时创建一个预览的站点！
+Hugo 实现了 [LiveReload](/doc/extras/livereload/) 技术用来自动重新加载打开的页面，只要是支持 JavaScript 的浏览器，包括移动设备。
+这是最简单也是最常见的开发 Hugo 站点的方法：
 
 {{< nohighlight >}}$ hugo server -ws ~/Code/hugo/docs
 0 draft content
@@ -123,18 +122,15 @@ Press Ctrl+C to stop
 {{< /nohighlight >}}
 
 
-## Deploying your web site
+## 部署你的站点
 
-After running `hugo server` for local web development,
-you need to do a final `hugo` run **without the `server` command** to rebuild your site. You may then **deploy your site** by copying the `public/` directory
-(by FTP, SFTP, WebDAV, Rsync, git push, etc.) to your production web server.
+本地开发并执行完 `hugo server` 之后，你需要最后执行一次 `hugo` 命令 **不带 `server` 参数** ，
+然后你就可以通过拷贝 `public` 目录（通过 FTP 、 SFTP 、 WebDAV 、 Rsync 、 git push 等等）到你的生产环境的 Web 服务器来 **部署你的站点**。
 
-Since Hugo generates a static website, your site can be hosted anywhere,
-including [Heroku][], [GoDaddy][], [DreamHost][], [GitHub Pages][],
-[Amazon S3][] and [CloudFront][], or any other cheap or even free
-static web hosting services.
+由于 Hugo 生成的是一个静态站点，你的站点可以托管到任何地方，包括 [Heroku][] 、 [GoDaddy][] 、 [DreamHost][] 、 [GitHub Pages][] 、 [Amazon S3][] 和 [CloudFront][] ，
+或者任何便宜甚至免费的静态网站托管服务。
 
-[Apache][], [nginx][], [IIS][]...  Any web server software would do!
+[Apache][], [nginx][], [IIS][]...  任何 Web 服务器都支持！
 
 [Apache]: http://httpd.apache.org/ "Apache HTTP Server"
 [nginx]: http://nginx.org/
@@ -147,34 +143,33 @@ static web hosting services.
 [CloudFront]: http://aws.amazon.com/cloudfront/ "Amazon CloudFront"
 
 
-### A note about deployment
+### 关于部署的说明
 
-Running `hugo` *does not* remove generated files before building. This means that you should delete your `public/` directory (or the directory you specified with `-d`/`--destination`) before running the `hugo` command, or you run the risk of the wrong files (e.g. drafts and/or future posts) being left in the generated site.
+运行 `hugo` 命令 *并不会* 删除之前生成的文件。这意味着你必须在运行 `hugo` 命令之前删除你的 `public/` 目录（或者你通过 `-d`/`--destination` 指定的目录）。
+不然的话，你可能有运行遗留在生成目录的错误文件的风险（比如草稿或者未来的文章）。
 
-An easy way to work around this is to use different directories for development and production.
+一个简单的处理方法是使用不同的目录用于开发和部署环境。
 
-To start a server that builds draft content (helpful for editing), you can specify a different destination: the `dev/` dir.
+启动一个会生成草稿内容（有助于编辑）的 Server ，指定一个不同的目标目录： `dev/` 目录
 
 {{< nohighlight >}}$ hugo server -wDs ~/Code/hugo/docs -d dev
 {{< /nohighlight >}}
 
-When the content is ready for publishing, use the default `public/` dir:
+当内容准备好发布时，使用默认的 `public/` 目录：
 
 {{< nohighlight >}}$ hugo -s ~/Code/hugo/docs
 {{< /nohighlight >}}
 
-This prevents content you're not ready to share yet from accidentally becoming available.
+这将防止你不小心发布了还未准备好的内容。
 
-### Alternatively, serve your web site with Hugo!
+### 或者, 直接用 Hugo 作为你的 Web 服务器！
 
-Yes, that's right!  Because Hugo is so blazingly fast both in web site creation
-*and* in web serving (thanks to its concurrent and multi-threaded design and
-its Go heritage), some users actually prefer using Hugo itself to serve their
-web site *on their production server*!
+是的，没错！由于 Hugo 运行的非常快，不仅在生成站点时，*也* 在运行 Web 服务时（得益于 Go 语言关于并发和多线程的良好设计）。
+有些用户事实上选择使用 Hugo 本身作为 Web 服务器**用于他的生产环境服务器**。
 
-No other web server software (Apache, nginx, IIS...) is necessary.
+不再需要其他的 Web 服务器了 （Apache 、 nginx 、 IIS ……）。
 
-Here is the command:
+下面是执行的命令：
 
 {{< nohighlight >}}$ hugo server --baseURL=http://yoursite.org/ \
               --port=80 \
@@ -182,16 +177,14 @@ Here is the command:
               --bind=87.245.198.50
 {{< /nohighlight >}}
 
-Note the `bind` option, which is the interface to which the server will bind (defaults to `127.0.0.1`, which is fine for most development use cases). Some hosts, like Amazon Web Services, runs network address translation and it can sometimes be hard to figure out the actual IP address. Using `--bind=0.0.0.0` will bind to all interfaces.
+注意 `bind` 选项，指定了服务器绑定到哪个网络接口（默认是 `127.0.0.1` ，适用于大多数开发的时候）。
+有些服务器，比如 Amazon WS ，使用网络地址转换（NAT）导致你有时很难找到实际使用的 IP 地址。
+使用 `--bind=0.0.0.0` 将可以绑定到所有接口。
 
-This way, you may actually deploy just the source files,
-and Hugo on your server will generate the resulting web site
-on-the-fly and serve them at the same time.
+通过这种方法，实际上你可以只部署你的源文件了，因为 Hugo 会在你的服务器上及时的生成 Web 站点。
 
-You may optionally add `--disableLiveReload=true` if you do not want
-the JavaScript code for LiveReload to be added to your web pages.
+你可以添加 `--disableLiveReload=true` 可选选项，如果你不希望将 LiveReload 相关的 JavaScript 代码添加到你的页面。
 
-Interested? Here are some great tutorials contributed by Hugo users:
+是不是很有趣？这里有一些 Hugo 用户贡献的不错的指引：
 
-* [hugo, syncthing](http://fredix.xyz/2014/10/hugo-syncthing/) (French) by Frédéric Logier (@fredix)
-
+* [hugo, syncthing](http://fredix.ovh/2014/10/hugo-syncthing/) (French) by Frédéric Logier (@fredix)
