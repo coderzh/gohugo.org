@@ -15,12 +15,22 @@ func TestUpdateOriginHugoRepo(t *testing.T) {
 }
 
 func TestConvertContentText(t *testing.T) {
-	content := "overview content\nurl: /overview/start.md\nlink: /theme/go.md"
-	docSubDirs := []string{"overview", "theme"}
+	content := `overview content\nurl: /overview/start.md\nlink: /theme/go.md
+	[link](/theme/test.md)
+	link: "/theme/test.md"
+	See [Aliases]({{< relref "extras/aliases.md" >}}) for details.
+	> theme/
+	/img/overview/notreplace.png`
+	docSubDirs := []string{"overview", "theme", "extras"}
 
 	convertedContent := convertContentText(docSubDirs, content)
 	assert.Equal(t,
-		"overview content\nurl: /doc/overview/start.md\nlink: /doc/theme/go.md",
+		`overview content\nurl: /doc/overview/start.md\nlink: /doc/theme/go.md
+	[link](/doc/theme/test.md)
+	link: "/doc/theme/test.md"
+	See [Aliases]({{< relref "doc/extras/aliases.md" >}}) for details.
+	> theme/
+	/img/overview/notreplace.png`,
 		convertedContent)
 }
 

@@ -69,7 +69,7 @@ of the following paths:
 
 # Showcase additions
 
-You got your new website running and it's powered by Hugo? Great. You can add your website with a few steps to the [showcase](/doc/showcase/).
+You got your new website running and it's powered by Hugo? Great. You can add your website with a few steps to the [showcase](/showcase/).
 
 First, make sure that you created a [fork](https://help.github.com/articles/fork-a-repo/) of Hugo on Github and cloned your fork on your local computer. Next, create a seperate branch for your additions:
 
@@ -85,7 +85,7 @@ cd docs
 hugo new doc/showcase/example.md
 ```
 
-You should find the new file at `doc/content/doc/showcase/example.md`. Open it in an editor. The file should contain a frontmatter with predefined variables like below:
+You should find the new file at `content/showcase/example.md`. Open it in an editor. The file should contain a frontmatter with predefined variables like below:
 
 ```
 ---

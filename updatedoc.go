@@ -76,7 +76,7 @@ func convertContentText(docSubDirs []string, content string) string {
 	replaceList := []ReplaceItem{}
 
 	for _, docSubDir := range docSubDirs {
-		replaceList = append(replaceList, ReplaceItem{"(" + docSubDir + ")/", "doc/$1/"})
+		replaceList = append(replaceList, ReplaceItem{`(["\(\s])(/?)(` + docSubDir + `)/(\w+)`, "${1}${2}doc/${3}/${4}"})
 	}
 
 	for _, replaceItem := range replaceList {

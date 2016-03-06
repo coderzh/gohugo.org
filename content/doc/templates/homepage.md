@@ -41,9 +41,9 @@ the list will be needed.
 * /layouts/index.html
 * /layouts/\_default/list.html
 * /layouts/\_default/single.html
-* /doc/themes/`THEME`/layouts/index.html
-* /doc/themes/`THEME`/layouts/\_default/list.html
-* /doc/themes/`THEME`/layouts/\_default/single.html
+* /themes/`THEME`/layouts/index.html
+* /themes/`THEME`/layouts/\_default/list.html
+* /themes/`THEME`/layouts/\_default/single.html
 
 ## Example index.html
 This content template is used for [spf13.com](http://spf13.com/).

@@ -13,7 +13,7 @@ toc: true
 weight: 70
 ---
 
-In addition to the [single content template](/doc/templates/doc/content/), Hugo can render alternative views of
+In addition to the [single content template](/doc/templates/content/), Hugo can render alternative views of
 your content. These are especially useful in [list templates](/doc/templates/list/).
 
 For example you may want content of every type to be shown on the
@@ -29,7 +29,7 @@ To create a new view, simply create a template in each of your different
 content type directories with the view name. In the following example, we
 have created a "li" view and a "summary" view for our two content types
 of post and project. As you can see, these sit next to the [single
-content view](/doc/templates/doc/content/) template "single.html". You can even
+content view](/doc/templates/content/) template "single.html". You can even
 provide a specific view for a given type and continue to use the
 \_default/single.html for the primary view.
 
@@ -68,8 +68,8 @@ the list will be needed.
 
 * /layouts/`TYPE`/`VIEW`.html
 * /layouts/\_default/`VIEW`.html
-* /doc/themes/`THEME`/layouts/`TYPE`/`VIEW`.html
-* /doc/themes/`THEME`/layouts/\_default/`view`.html
+* /themes/`THEME`/layouts/`TYPE`/`VIEW`.html
+* /themes/`THEME`/layouts/\_default/`view`.html
 
 
 ## Example using views

@@ -60,11 +60,11 @@ Skins are the files responsible for the look and feel of your site. It’s the C
 
 You have two ways to create a skin. The simplest way is to create it in the `layouts/` directory. If you do, then you don’t have to worry about configuring Hugo to recognize it. The first place that Hugo will look for rules and files is in the `layouts/` directory so it will always find the skin.
 
-Your second choice is to create it in a sub-directory of the `doc/themes/` directory. If you do, then you must always tell Hugo where to search for the skin. It’s extra work, though, so why bother with it?
+Your second choice is to create it in a sub-directory of the `themes/` directory. If you do, then you must always tell Hugo where to search for the skin. It’s extra work, though, so why bother with it?
 
-The difference between creating a skin in `layouts/` and creating it in `doc/themes/` is very subtle. A skin in `layouts/` can’t be customized without updating the templates and static files that it is built from. A skin created in `doc/themes/`, on the other hand, can be and that makes it easier for other people to use it.
+The difference between creating a skin in `layouts/` and creating it in `themes/` is very subtle. A skin in `layouts/` can’t be customized without updating the templates and static files that it is built from. A skin created in `themes/`, on the other hand, can be and that makes it easier for other people to use it.
 
-The rest of this tutorial will call a skin created in the `doc/themes/` directory a theme.
+The rest of this tutorial will call a skin created in the `themes/` directory a theme.
 
 Note that you can use this tutorial to create a skin in the `layouts/` directory if you wish to. The main difference will be that you won’t need to update the site’s configuration file to use a theme.
 
@@ -76,7 +76,7 @@ The home page, or landing page, is the first page that many visitors to a site s
 
 When Hugo runs, it looks for a configuration file that contains settings that override default values for the entire site. The file can use TOML, YAML, or JSON. I prefer to use TOML for my configuration files. If you prefer to use JSON or YAML, you’ll need to translate my examples. You’ll also need to change the name of the file since Hugo uses the extension to determine how to process it.
 
-Hugo translates Markdown files into HTML. By default, Hugo expects to find Markdown files in your `doc/content/` directory and template files in your `doc/themes/` directory. It will create HTML files in your `public/` directory. You can change this by specifying alternate locations in the configuration file.
+Hugo translates Markdown files into HTML. By default, Hugo expects to find Markdown files in your `content/` directory and template files in your `themes/` directory. It will create HTML files in your `public/` directory. You can change this by specifying alternate locations in the configuration file.
 
 ### Content
 
@@ -133,7 +133,7 @@ drwxr-xr-x  2 mdhender  wheel   68 Nov 27 20:27 static
 $ 
 ```
 
-Take a look in the `doc/content/` directory to confirm that it is empty.
+Take a look in the `content/` directory to confirm that it is empty.
 
 The other directories (`archetypes/`, `data/`, `layouts/`, and `static/`) are used when customizing a named theme. That's a topic for a different tutorial, so please ignore them for now.
 
@@ -318,7 +318,7 @@ Now that we have an empty theme, let's generate the site again.
 ```bash
 $ hugo --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /tmp/hugo-0.15/public/
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /tmp/hugo-0.15/public/
 0 draft content
 0 future content
@@ -330,7 +330,7 @@ in 4 ms
 $
 ```
 
-Did you notice that the output is different? The warning message for the home page has disappeared and we have an additional information line saying that Hugo is syncing from the theme's directory (`doc/themes/zafta/`).
+Did you notice that the output is different? The warning message for the home page has disappeared and we have an additional information line saying that Hugo is syncing from the theme's directory (`themes/zafta/`).
 
 Let's check the `public/` directory to see what Hugo's created.
 
@@ -371,7 +371,7 @@ When Hugo created our theme, it created an empty home page template. Now, when w
 ```bash
 $ find . -name index.html | xargs ls -l
 -rw-r--r--  1 mdhender  wheel  0 Nov 27 20:42 ./public/index.html
--rw-r--r--  1 mdhender  wheel  0 Nov 27 20:35 ./doc/themes/zafta/layouts/index.html
+-rw-r--r--  1 mdhender  wheel  0 Nov 27 20:35 ./themes/zafta/layouts/index.html
 $ 
 ```
 
@@ -417,7 +417,7 @@ As of version 0.15, Hugo doesn't write files when running in server mode. Instea
 
 ### Hugo's Watch Option
 
-Hugo's "`--watch`" option will monitor the doc/content/ and your theme directories for changes and rebuild the site automatically. Since version 0.15, this has been the default option for `hugo server`.
+Hugo's "`--watch`" option will monitor the content/ and your theme directories for changes and rebuild the site automatically. Since version 0.15, this has been the default option for `hugo server`.
 
 ### Live Reload
 
@@ -446,7 +446,7 @@ Here's sample output showing Hugo detecting a change to the template for the hom
 ```bash
 $ hugo server --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /
 0 draft content
 0 future content
@@ -460,7 +460,7 @@ Serving pages from memory
 Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 
-INFO: 2015/11/27 File System Event: ["/tmp/hugo-0.15/doc/themes/zafta/layouts/index.html": CHMOD "/tmp/hugo-0.15/doc/themes/zafta/layouts/index.html": WRITE]
+INFO: 2015/11/27 File System Event: ["/tmp/hugo-0.15/themes/zafta/layouts/index.html": CHMOD "/tmp/hugo-0.15/themes/zafta/layouts/index.html": WRITE]
 
 Change detected, rebuilding site
 2015-11-27 20:57 -0600
@@ -504,7 +504,7 @@ Build the web site and then verify the results.
 ```bash
 $ hugo --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /tmp/hugo-0.15/public/
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /tmp/hugo-0.15/public/
 0 draft content
 0 future content
@@ -541,9 +541,9 @@ Hugo has a command to generate a skeleton entry for new content, just like it do
  hugo --verbose new article/first.md
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
 INFO: 2015/11/27 attempting to create  article/first.md of article
-INFO: 2015/11/27 curpath: /tmp/hugo-0.15/doc/themes/zafta/archetypes/default.md
-INFO: 2015/11/27 creating /tmp/hugo-0.15/doc/content/article/first.md
-/tmp/hugo-0.15/doc/content/article/first.md created
+INFO: 2015/11/27 curpath: /tmp/hugo-0.15/themes/zafta/archetypes/default.md
+INFO: 2015/11/27 creating /tmp/hugo-0.15/content/article/first.md
+/tmp/hugo-0.15/content/article/first.md created
 
 $ ls -l doc/content/article/
 total 8
@@ -557,9 +557,9 @@ Let's create a second article while we're here.
 $ hugo --verbose new article/second.md
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
 INFO: 2015/11/27 attempting to create  article/second.md of article
-INFO: 2015/11/27 curpath: /tmp/hugo-0.15/doc/themes/zafta/archetypes/default.md
-INFO: 2015/11/27 creating /tmp/hugo-0.15/doc/content/article/second.md
-/tmp/hugo-0.15/doc/content/article/second.md created
+INFO: 2015/11/27 curpath: /tmp/hugo-0.15/themes/zafta/archetypes/default.md
+INFO: 2015/11/27 creating /tmp/hugo-0.15/content/article/second.md
+/tmp/hugo-0.15/content/article/second.md created
 
 $ ls -l doc/content/article/
 total 16
@@ -605,7 +605,7 @@ Build the web site and then verify the results.
 $ rm -rf public/
 $ hugo --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /tmp/hugo-0.15/public/
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 found taxonomies: map[string]string{"tag":"tags", "category":"categories"}
 0 draft content
@@ -695,7 +695,7 @@ Build the web site and then verify the results.
 $ rm -rf public/
 $ hugo --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /tmp/hugo-0.15/public/
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 found taxonomies: map[string]string{"tag":"tags", "category":"categories"}
 0 draft content
@@ -735,7 +735,7 @@ There's also a few things to understand about developing and testing your theme.
 
 ### Add Content to the Articles
 
-We're working with articles, which are in the `doc/content/article/` directory. That means that their section (as far as templates are concerned) is "article." If we don't do something weird, their type is also "article."
+We're working with articles, which are in the `content/article/` directory. That means that their section (as far as templates are concerned) is "article." If we don't do something weird, their type is also "article."
 
 Hugo uses the section and type to find the template file for every piece of content that it renders. Hugo will first look for a template file that matches the section or type name. If it can't find one, then it will look in the `_default/` directory. There are some twists that we'll cover when we get to categories and tags, but for now we can assume that Hugo will try `article/single.html`, then `_default/single.html`.
 
@@ -783,7 +783,7 @@ Build the web site and verify the results.
 $ rm -rf public/
 $ hugo --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /tmp/hugo-0.15/public/
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 found taxonomies: map[string]string{"tag":"tags", "category":"categories"}
 0 draft content
@@ -887,7 +887,7 @@ Go ahead and render everything again.
 $ rm -rf public
 $ hugo --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /tmp/hugo-0.15/public/
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 found taxonomies: map[string]string{"tag":"tags", "category":"categories"}
 0 draft content
@@ -915,12 +915,12 @@ We now have a list of articles. You can start `hugo server` and use your browser
 
 Let's add an "about" page and display it at the top level (as opposed to a sub-level like we did with articles).
 
-The default in Hugo is to use the directory structure of the `doc/content/` directory to guide the location of the generated html in the `public/` directory. Let's verify that by creating an "about" page at the top level:
+The default in Hugo is to use the directory structure of the `content/` directory to guide the location of the generated html in the `public/` directory. Let's verify that by creating an "about" page at the top level:
 
 ```bash
 $ hugo new about.md
-/tmp/hugo-0.15/doc/content/about.md created
-$ ls -l doc/content/
+/tmp/hugo-0.15/content/about.md created
+$ ls -l content/
 total 8
 drwxr-xr-x   4 mdhender  wheel  136 Nov 27 22:01 .
 drwxr-xr-x  10 mdhender  wheel  340 Nov 27 21:56 ..
@@ -945,7 +945,7 @@ Render the web site and verify the results.
 $ rm -rf public/
 $ hugo --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /tmp/hugo-0.15/public/
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 found taxonomies: map[string]string{"tag":"tags", "category":"categories"}
 0 draft content
@@ -1043,7 +1043,7 @@ Render the web site and verify the results.
 $ rm -rf public/
 $ hugo --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /tmp/hugo-0.15/public/
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 found taxonomies: map[string]string{"tag":"tags", "category":"categories"}
 0 draft content
@@ -1073,7 +1073,7 @@ The home page has two sections, Articles and Pages, and each section has the rig
 
 If you've been following along, you probably noticed that articles have titles in the browser and the home page doesn't. That's because we didn't put the title in the homepage's template (`layouts/index.html`). That's an easy thing to do, but let's look at a better option.
 
-We can put the common bits into a shared template that's stored in the `doc/themes/zafta/layouts/partials/` directory.
+We can put the common bits into a shared template that's stored in the `themes/zafta/layouts/partials/` directory.
 
 ### Create the Header and Footer Partials
 
@@ -1226,7 +1226,7 @@ Render the site and verify the results. Articles have dates and the about page d
 $ rm -rf public/
 $ hugo --verbose
 INFO: 2015/11/27 Using config file: /tmp/hugo-0.15/config.toml
-INFO: 2015/11/27 syncing from /tmp/hugo-0.15/doc/themes/zafta/static to /tmp/hugo-0.15/public/
+INFO: 2015/11/27 syncing from /tmp/hugo-0.15/themes/zafta/static to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 syncing from /tmp/hugo-0.15/static/ to /tmp/hugo-0.15/public/
 INFO: 2015/11/27 found taxonomies: map[string]string{"tag":"tags", "category":"categories"}
 0 draft content

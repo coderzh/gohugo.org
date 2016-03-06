@@ -66,7 +66,7 @@ For example, the *tags* and *categories* taxonomies are accessed with:
 
 **All Params are only accessible using all lowercase characters.**
 
-This is particularly useful for the introduction of user defined fields in content files. For example, a Hugo website on book reviews could have in the front matter of <code>/doc/content/review/book01.md</code>
+This is particularly useful for the introduction of user defined fields in content files. For example, a Hugo website on book reviews could have in the front matter of <code>/content/review/book01.md</code>
 
     ---
 	...
@@ -74,7 +74,7 @@ This is particularly useful for the introduction of user defined fields in conte
 	recommendedby: "my Mother"
     ---
 
-Which would then be accessible to a template at `/doc/themes/yourtheme/layouts/review/single.html` through `.Params.affiliatelink` and `.Params.recommendedby`, respectively. Two common situations where these could be introduced are as a value of a certain attribute (like `href=""` below) or by itself to be displayed. Sample syntaxes include:
+Which would then be accessible to a template at `/themes/yourtheme/layouts/review/single.html` through `.Params.affiliatelink` and `.Params.recommendedby`, respectively. Two common situations where these could be introduced are as a value of a certain attribute (like `href=""` below) or by itself to be displayed. Sample syntaxes include:
 
     <h3><a href={{ printf "%s" $.Params.affiliatelink }}>Buy this book</a></h3>
 	<p>It was recommended by {{ .Params.recommendedby }}.</p>

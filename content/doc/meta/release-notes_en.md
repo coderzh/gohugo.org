@@ -237,7 +237,7 @@ maintainers and their tremendous contributions this release.
 * Support for [data files](/doc/extras/datafiles/) in [YAML](http://yaml.org/),
   [JSON](http://www.json.org/), or [TOML](https://github.com/toml-lang/toml)
   located in the `data` directory ({{< gh 885 >}})
-* Support for [dynamic content](/doc/extras/dynamicdoc/content/) by loading JSON & CSV
+* Support for [dynamic content](/doc/extras/dynamiccontent/) by loading JSON & CSV
   from remote sources via GetJson and GetCsv in short codes or other layout
   files ({{< gh 748 >}})
 * [Pagination support](/doc/extras/pagination/) for home page, sections and
@@ -297,7 +297,7 @@ maintainers and their tremendous contributions this release.
 * Internal change to use byte buffer pool significantly lowering memory usage
   and providing measurable performance improvements overall
 * Changes to docs:
-    * A new [Troubleshooting](/doc/troubleshooting/doc/overview/) section is added
+    * A new [Troubleshooting](/doc/troubleshooting/overview/) section is added
     * It's now searchable through Google Custom Search ({{< gh 753 >}})
     * Some new great tutorials:
         * [Automated deployments with
@@ -333,7 +333,7 @@ This release represents over 90 code commits from 28 different contributors.
   * [GroupBy](/doc/templates/list/) & [GroupByDate](/doc/templates/list/) methods to group pages
   * Taxonomy [pages list](/doc/taxonomies/methods/) now sortable, filterable, limitable & groupable
   * General cleanup to taxonomies & documentation to make it more clear and consistent
-  * [Showcase](/doc/showcase/) returned and has been expanded
+  * [Showcase](/showcase/) returned and has been expanded
   * Pretty links now always have trailing slashes
   * [BaseUrl](/doc/overview/configuration/) can now include a subdirectory
   * Better feedback about draft & future post rendering
@@ -352,14 +352,14 @@ This release represents over 110 code commits from 29 different contributors.
   * [Builders](/doc/extras/builders/) to quickly create a new site, content or theme
   * [XML sitemap](/doc/templates/sitemap/) generation
   * [Integrated Disqus](/doc/extras/comments/) support
-  * Streamlined [template organization](/doc/templates/doc/overview/)
+  * Streamlined [template organization](/doc/templates/overview/)
   * [Brand new docs site](http://gohugo.io/)
   * Support for publishDate which allows for posts to be dated in the future
   * More [sort](/doc/content/ordering/) options
   * Logging support
   * Much better error handling
   * More informative verbose output
-  * Renamed Indexes > [Taxonomies](/doc/taxonomies/doc/overview/)
+  * Renamed Indexes > [Taxonomies](/doc/taxonomies/overview/)
   * Renamed Chrome > [Partials](/doc/templates/partials/)
 
 ----
@@ -380,7 +380,7 @@ This release represents over 110 code commits from 29 different contributors.
   * Watching very large sites now works on Mac
   * RSS generation improved. Limited to 50 items by default, can limit further in [template](/layout/rss/)
   * Boolean params now supported in [frontmatter](/doc/content/front-matter/)
-  * Launched website [showcase](/doc/showcase/). Show off your own hugo site!
+  * Launched website [showcase](/showcase/). Show off your own hugo site!
   * A bunch of [bug fixes](https://github.com/spf13/hugo/commits/master)
 
 ----

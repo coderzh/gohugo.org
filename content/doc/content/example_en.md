@@ -16,7 +16,7 @@ weight: 70
 
 Some things are better shown than explained. The following is a very basic example of a content file written in [Markdown](https://help.github.com/articles/github-flavored-markdown/):
 
-**mysite/doc/content/project/nitro.md → http://mysite.com/project/nitro.html**
+**mysite/content/project/nitro.md → http://mysite.com/project/nitro.html**
 
 With TOML front matter:
 

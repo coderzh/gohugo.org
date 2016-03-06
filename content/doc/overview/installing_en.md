@@ -3,7 +3,6 @@ aliases:
 - /doc/installing/
 date: 2013-07-01
 lastmod: 2016-01-04
-linktitle: Installing Hugo
 menu:
   main:
     parent: getting started

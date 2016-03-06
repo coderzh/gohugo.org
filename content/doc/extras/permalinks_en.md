@@ -32,7 +32,7 @@ permalinks:
 ```
 
 Only the content under `post/` will be so rewritten.
-A file named `doc/content/post/sample-entry` which contains a line
+A file named `content/post/sample-entry` which contains a line
 `date: 2013-11-18T19:20:00-05:00` might end up with the rendered page
 appearing at `public/2013/11/sample-entry/index.html` and be reachable via
 the URL <http://yoursite.example.com/2013/11/sample-entry/>.

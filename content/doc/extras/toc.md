@@ -25,7 +25,7 @@ Hugo will take this Markdown and create a table of contents stored in the
 
 ## Template Example
 
-This is example code of a [single.html template](/layout/doc/content/).
+This is example code of a [single.html template](/layout/content/).
 
     {{ partial "header.html" . }}
         <div id="toc" class="well col-md-4 col-sm-6">

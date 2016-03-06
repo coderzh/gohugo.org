@@ -37,9 +37,9 @@ it will be used instead of `section`.
 * /layouts/`TYPE`-or-`SECTION`/`LAYOUT`.html
 * /layouts/`TYPE`-or-`SECTION`/single.html
 * /layouts/\_default/single.html
-* /doc/themes/`THEME`/layouts/`TYPE`-or-`SECTION`/`LAYOUT`.html
-* /doc/themes/`THEME`/layouts/`TYPE`-or-`SECTION`/single.html
-* /doc/themes/`THEME`/layouts/\_default/single.html
+* /themes/`THEME`/layouts/`TYPE`-or-`SECTION`/`LAYOUT`.html
+* /themes/`THEME`/layouts/`TYPE`-or-`SECTION`/single.html
+* /themes/`THEME`/layouts/\_default/single.html
 
 ## Example Single Template File
 

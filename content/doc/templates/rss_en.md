@@ -36,16 +36,16 @@ Hugo will use the following prioritized list. If a file isn’t present, then th
 
 * /layouts/section/`SECTION`.rss.xml
 * /layouts/\_default/rss.xml
-* /doc/themes/`THEME`/layouts/section/`SECTION`.rss.xml
-* /doc/themes/`THEME`/layouts/\_default/rss.xml
+* /themes/`THEME`/layouts/section/`SECTION`.rss.xml
+* /themes/`THEME`/layouts/\_default/rss.xml
 * [Embedded rss.xml](#the-embedded-rss-xml:eceb479b7b3b2077408a2878a29e1320)
 
 ### Taxonomy RSS
 
 * /layouts/taxonomy/`SINGULAR`.rss.xml
 * /layouts/\_default/rss.xml
-* /doc/themes/`THEME`/layouts/taxonomy/`SINGULAR`.rss.xml
-* /doc/themes/`THEME`/layouts/\_default/rss.xml
+* /themes/`THEME`/layouts/taxonomy/`SINGULAR`.rss.xml
+* /themes/`THEME`/layouts/\_default/rss.xml
 * [Embedded rss.xml](#the-embedded-rss-xml:eceb479b7b3b2077408a2878a29e1320)
 
 

@@ -33,9 +33,9 @@ Learn more about the different directories and what their purpose is:
 * [data](/doc/extras/datafiles/)
 * [archetypes](/doc/content/archetypes/)
 * [content](/doc/content/organization/)
-* [layouts](/doc/layout/overview/)
+* [layouts](/layout/overview/)
 * [static](/doc/themes/creation#toc_4)
-* [themes](/doc/themes/doc/overview/)
+* [themes](/doc/themes/overview/)
 
 
 ## Example

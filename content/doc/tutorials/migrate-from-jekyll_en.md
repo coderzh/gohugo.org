@@ -51,7 +51,7 @@ The default is for Jekyll to publish to `_site` and for Hugo to publish to `publ
         }
 
 ## Convert Jekyll templates to Hugo templates
-That's the bulk of the work right here. The documentation is your friend. You should refer to [Jekyll's template documentation](http://jekyllrb.com/docs/doc/templates/) if you need to refresh your memory on how you built your blog and [Hugo's template](/layout/doc/templates/) to learn Hugo's way.
+That's the bulk of the work right here. The documentation is your friend. You should refer to [Jekyll's template documentation](http://jekyllrb.com/docs/templates/) if you need to refresh your memory on how you built your blog and [Hugo's template](/layout/templates/) to learn Hugo's way.
 
 As a single reference data point, converting my templates for [heyitsalex.net](http://heyitsalex.net/) took me no more than a few hours.
 

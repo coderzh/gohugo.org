@@ -23,7 +23,7 @@ The  assumptions made for this tutorial are that you know how to use git for ver
 
 ## Creating a basic Hugo site
 
-There are already [pages](http://gohugo.io/doc/overview/quickstart/) dedicated to describing how to set up a Hugo site so we will only go through the most basic steps required to get a site up and running before we dive into the Wercker configuration. All the work for setting up the project is done using the command line, and kept as simple as possible.
+There are already [pages](http://gohugo.io/overview/quickstart/) dedicated to describing how to set up a Hugo site so we will only go through the most basic steps required to get a site up and running before we dive into the Wercker configuration. All the work for setting up the project is done using the command line, and kept as simple as possible.
 
 Create the new site using the `hugo new site` command, and we move into it.
 
@@ -68,7 +68,7 @@ If everything is fine, you should be able to see something similar to the image 
 
 ![][1]
 
-[1]: /img/doc/tutorials/creating-a-basic-hugo-site.png
+[1]: /img/tutorials/creating-a-basic-hugo-site.png
 
 ## Setting up version control
 
@@ -109,7 +109,7 @@ git push -u origin master
 
 ![][2]
 
-[2]: /img/doc/tutorials/adding-the-project-to-github.png
+[2]: /img/tutorials/adding-the-project-to-github.png
 
 ## Welcome to wercker
 
@@ -117,7 +117,7 @@ Let's start by setting up an account for Wercker. To do so we'll go to http://we
 
 ![][3]
 
-[3]: /img/doc/tutorials/wercker-sign-up.png
+[3]: /img/tutorials/wercker-sign-up.png
 
 ## Register
 
@@ -125,7 +125,7 @@ To make life easier for ourselves, we will then register using GitHub. If you do
 
 ![][4]
 
-[4]: /img/doc/tutorials/wercker-sign-up-page.png
+[4]: /img/tutorials/wercker-sign-up-page.png
 
 ## Connect GitHub/Bitbucket
 
@@ -133,7 +133,7 @@ After you are registered, you will need to link your GitHub and/or Bitbucket acc
 
 ![][5]
 
-[5]: /img/doc/tutorials/wercker-git-connections.png
+[5]: /img/tutorials/wercker-git-connections.png
 
 ## Add your project
 
@@ -141,7 +141,7 @@ Now that we've got all the preliminaries out of the way, it's time to set up our
 
 ![][6]
 
-[6]: /img/doc/tutorials/wercker-add-app.png
+[6]: /img/tutorials/wercker-add-app.png
 
 ## Select a repository
 
@@ -149,7 +149,7 @@ Clicking this will make Wercker show you all the repositories you have on GitHub
 
 ![][7]
 
-[7]: /img/doc/tutorials/wercker-select-repository.png
+[7]: /img/tutorials/wercker-select-repository.png
 
 ## Select the repository owner
 
@@ -157,7 +157,7 @@ In the next step, Wercker asks you to select the repository owner. Just select y
 
 ![][8]
 
-[8]: /img/doc/tutorials/wercker-select-owner.png
+[8]: /img/tutorials/wercker-select-owner.png
 
 ## Configure access
 
@@ -165,7 +165,7 @@ This step can be slightly tricky. As Wercker doesn't access to check out your pr
 
 ![][9]
 
-[9]: /img/doc/tutorials/wercker-access.png
+[9]: /img/tutorials/wercker-access.png
 
 ## Wercker.yml
 
@@ -173,7 +173,7 @@ Wercker will now attempt to create an initial *wercker.yml* file for you. Or rat
 
 ![][10]
 
-[10]: /img/doc/tutorials/werckeryml.png
+[10]: /img/tutorials/werckeryml.png
 
 ## Public or not
 
@@ -181,7 +181,7 @@ This is a personal choice, you can make an app public so that everyone can see m
 
 ![][11]
 
-[11]: /img/doc/tutorials/public-or-not.png
+[11]: /img/tutorials/public-or-not.png
 
 ## And we've got an app
 
@@ -189,7 +189,7 @@ The application is added now, and Wercker will be offering you the chance to tri
 
 ![][12]
 
-[12]: /img/doc/tutorials/and-we-ve-got-an-app.png
+[12]: /img/tutorials/and-we-ve-got-an-app.png
 
 ## Adding steps
 
@@ -197,7 +197,7 @@ And now we're going to add the steps themselves. First, we go to the "Registry" 
 
 ![][13]
 
-[13]: /img/doc/tutorials/wercker-search.png
+[13]: /img/tutorials/wercker-search.png
 
 ## Using Hugo-Build
 
@@ -226,7 +226,7 @@ Once completed a nice tick should have appeared in front of your first build, an
 
 ![][14]
 
-[14]: /img/doc/tutorials/using-hugo-build.png
+[14]: /img/tutorials/using-hugo-build.png
 
 ## Adding a GitHub Pages step
 
@@ -258,7 +258,7 @@ And lastly, you can see here that this has a **$GIT_TOKEN** variable. This is us
 
 ![][15]
 
-[15]: /img/doc/tutorials/adding-a-github-pages-step.png
+[15]: /img/tutorials/adding-a-github-pages-step.png
 
 ## Configure the deploy step
 
@@ -266,7 +266,7 @@ Simply fill in the name, and make sure you enable **auto deploy** from the **mas
 
 ![][16]
 
-[16]: /img/doc/tutorials/configure-the-deploy-step.png
+[16]: /img/tutorials/configure-the-deploy-step.png
 
 ## Conclusion
 

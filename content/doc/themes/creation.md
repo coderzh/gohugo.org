@@ -17,7 +17,7 @@ using the `hugo new` command.
 
 This command will initialize all of the files and directories a basic theme
 would need. Hugo themes are written in the Go template language. If you are new
-to Go, the [Go template primer](/layout/go-doc/templates/) will help you get started.
+to Go, the [Go template primer](/layout/go-templates/) will help you get started.
 
 ## Theme Components
 

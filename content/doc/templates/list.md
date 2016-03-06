@@ -42,9 +42,9 @@ A Section will be rendered at /`SECTION`/ (e.g.&nbsp;http://spf13.com/project/)
 * /layouts/section/`SECTION`.html
 * /layouts/\_default/section.html
 * /layouts/\_default/list.html
-* /doc/themes/`THEME`/layouts/section/`SECTION`.html
-* /doc/themes/`THEME`/layouts/\_default/section.html
-* /doc/themes/`THEME`/layouts/\_default/list.html
+* /themes/`THEME`/layouts/section/`SECTION`.html
+* /themes/`THEME`/layouts/\_default/section.html
+* /themes/`THEME`/layouts/\_default/list.html
 
 
 ### Taxonomy Lists
@@ -54,9 +54,9 @@ A Taxonomy will be rendered at /`PLURAL`/`TERM`/ (e.g.&nbsp;http://spf13.com/top
 * /layouts/taxonomy/`SINGULAR`.html (e.g.&nbsp;`/layouts/taxonomy/topic.html`)
 * /layouts/\_default/taxonomy.html
 * /layouts/\_default/list.html
-* /doc/themes/`THEME`/layouts/taxonomy/`SINGULAR`.html
-* /doc/themes/`THEME`/layouts/\_default/taxonomy.html
-* /doc/themes/`THEME`/layouts/\_default/list.html
+* /themes/`THEME`/layouts/taxonomy/`SINGULAR`.html
+* /themes/`THEME`/layouts/\_default/taxonomy.html
+* /themes/`THEME`/layouts/\_default/list.html
 
 ### Section RSS
 
@@ -71,8 +71,8 @@ can have different RSS files for each section and taxonomy.
 
 * /layouts/section/`SECTION`.rss.xml
 * /layouts/\_default/rss.xml
-* /doc/themes/`THEME`/layouts/section/`SECTION`.rss.xml
-* /doc/themes/`THEME`/layouts/\_default/rss.xml
+* /themes/`THEME`/layouts/section/`SECTION`.rss.xml
+* /themes/`THEME`/layouts/\_default/rss.xml
 
 ### Taxonomy RSS
 
@@ -87,8 +87,8 @@ can have different RSS files for each section and taxonomy.
 
 * /layouts/taxonomy/`SINGULAR`.rss.xml
 * /layouts/\_default/rss.xml
-* /doc/themes/`THEME`/layouts/taxonomy/`SINGULAR`.rss.xml
-* /doc/themes/`THEME`/layouts/\_default/rss.xml
+* /themes/`THEME`/layouts/taxonomy/`SINGULAR`.rss.xml
+* /themes/`THEME`/layouts/\_default/rss.xml
 
 
 ## Variables

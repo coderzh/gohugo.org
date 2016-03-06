@@ -25,9 +25,9 @@ While Hugo has a number of different template roles, most complete
 websites can be built using just a small number of template files.
 Please don’t be afraid of the variety of different template roles. They
 enable Hugo to build very complicated sites. Most sites will only
-need to create a [/layouts/\_default/single.html](/doc/templates/doc/content/) & [/layouts/\_default/list.html](/doc/templates/list/)
+need to create a [/layouts/\_default/single.html](/doc/templates/content/) & [/layouts/\_default/list.html](/doc/templates/list/)
 
-If you are new to Go's templates, the [Go Template Primer](/layout/go-doc/templates/)
+If you are new to Go's templates, the [Go Template Primer](/layout/go-templates/)
 is a great place to start.
 
 If you are familiar with Go’s templates, Hugo provides some [additional
@@ -38,7 +38,7 @@ with.
 
 There are 3 primary kinds of templates that Hugo works with.
 
-### [Single](/doc/templates/doc/content/)
+### [Single](/doc/templates/content/)
 Render a single piece of content
 
 ### [List](/doc/templates/list/)

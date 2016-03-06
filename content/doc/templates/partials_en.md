@@ -108,7 +108,7 @@ To reference a partial template stored in a subfolder, e.g. `/layout/partials/po
 Note that the subdirectories you create under /layout/partials can be named whatever you like.
 
 For more examples of referencing these templates, see
-[single content templates](/doc/templates/doc/content/),
+[single content templates](/doc/templates/content/),
 [list templates](/doc/templates/list/) and
 [homepage templates](/doc/templates/homepage/).
 

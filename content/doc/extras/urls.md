@@ -16,13 +16,13 @@ weight: 110
 ## Pretty URLs
 
 By default, Hugo creates content with 'pretty' URLs. For example,
-content created at `/doc/content/doc/extras/urls.md` will be rendered at
-`/public/doc/extras/urls/index.html`, thus accessible from the browser
-at http://example.com/doc/extras/urls/.  No non-standard server-side
+content created at `/content/extras/urls.md` will be rendered at
+`/public/extras/urls/index.html`, thus accessible from the browser
+at http://example.com/extras/urls/.  No non-standard server-side
 configuration is required for these pretty URLs to work.
 
 If you would like to have what we call "ugly URLs",
-e.g.&nbsp;http://example.com/doc/extras/urls.html, you are in luck.
+e.g.&nbsp;http://example.com/extras/urls.html, you are in luck.
 Hugo supports the ability to create your entire site with ugly URLs.
 Simply add `uglyurls = true` to your site-wide `config.toml`,
 or use the `--uglyURLs=true` flag on the command line.

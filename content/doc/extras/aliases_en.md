@@ -22,7 +22,7 @@ Luckily, redirects can be handled easily with _aliases_ in Hugo.
 
 Given a post on your current Hugo site, with a path of:
 
-``doc/content/posts/my-awesome-blog-post.md``
+``content/posts/my-awesome-blog-post.md``
 
 ... you create an "aliases" section in the frontmatter of your post, and add previous paths to that.
 

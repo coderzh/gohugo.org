@@ -394,7 +394,7 @@ so, such as in this example:
 
 Go allows you to do more than what's shown here.  Using Hugo's
 [`where`](/doc/templates/functions/#toc_4) function and Go built-ins, we can list
-only the items from `doc/content/events/` whose date (set in the front matter) is in
+only the items from `content/events/` whose date (set in the front matter) is in
 the future:
 
     <h4>Upcoming Events</h4>

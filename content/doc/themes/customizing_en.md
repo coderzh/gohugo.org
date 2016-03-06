@@ -31,7 +31,7 @@ For example, if the theme has jQuery 1.6 in:
 
 Anytime Hugo looks for a matching template, it will first check the working directory before looking in the theme directory. If you would like to modify a template, simply create that template in your local `layouts` directory.
 
-In the [template documentation](/doc/templates/doc/overview/) _each different template type explains the rules it uses to determine which template to use_. Read and understand these rules carefully.
+In the [template documentation](/doc/templates/overview/) _each different template type explains the rules it uses to determine which template to use_. Read and understand these rules carefully.
 
 This is especially helpful when the theme creator used [partial templates](/doc/templates/partials/). These partial templates are perfect for easy injection into the theme with minimal maintenance to ensure future compatibility.
 

@@ -28,7 +28,7 @@ The single parameter to `ref` is a string with a content _document name_ (`about
 
 ### Document Names
 
-The _document name_ is the name of a document including the format extension; this may be just the filename, or the relative path from the `doc/content/` directory. With a document `doc/content/blog/post.md`, either format will produce the same result.
+The _document name_ is the name of a document including the format extension; this may be just the filename, or the relative path from the `content/` directory. With a document `content/blog/post.md`, either format will produce the same result.
 
     {{</* relref "blog/post.md" */>}} ⇒ `/blog/post/`
     {{</* relref "post.md" */>}} ⇒ `/blog/post/`

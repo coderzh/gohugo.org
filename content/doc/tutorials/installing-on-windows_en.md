@@ -90,7 +90,7 @@ D:\Hugo\Sites\example.com&gt;dir
                7 Dir(s)   6,273,331,200 bytes free
 {{< /nohighlight >}}
 
-You now have Hugo installed and a site to work with. You need to add a layout (or theme), then create some content. Go to http://gohugo.io/doc/overview/quickstart/ for steps on doing that.
+You now have Hugo installed and a site to work with. You need to add a layout (or theme), then create some content. Go to http://gohugo.io/overview/quickstart/ for steps on doing that.
 
 ## Troubleshooting
 

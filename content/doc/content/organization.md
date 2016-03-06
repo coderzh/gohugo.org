@@ -100,17 +100,17 @@ When a `url` is provided, it will be used exactly. Using `url` will ignore the
 
     .             path           slug
     .       ⊢-------^----⊣ ⊢------^-------⊣
-    doc/content/doc/extras/indexes/category-example/index.html
+    doc/content/extras/indexes/category-example/index.html
 
 
     .       section              slug
     .       ⊢--^--⊣        ⊢------^-------⊣
-    doc/content/doc/extras/indexes/category-example/index.html
+    doc/content/extras/indexes/category-example/index.html
 
 
     .       section  slug
     .       ⊢--^--⊣⊢--^--⊣
-    doc/content/doc/extras/indexes/index.html
+    doc/content/extras/indexes/index.html
 
 ### Destination
 
@@ -127,12 +127,12 @@ When a `url` is provided, it will be used exactly. Using `url` will ignore the
 
        baseURL       section          slug
     ⊢-----^--------⊣ ⊢--^--⊣        ⊢--^--⊣
-    http://spf13.com/doc/extras/indexes/example
+    http://spf13.com/extras/indexes/example
 
 
        baseURL            path       slug
     ⊢-----^--------⊣ ⊢------^-----⊣ ⊢--^--⊣
-    http://spf13.com/doc/extras/indexes/example
+    http://spf13.com/extras/indexes/example
 
 
        baseURL            url
@@ -142,7 +142,7 @@ When a `url` is provided, it will be used exactly. Using `url` will ignore the
 
        baseURL               url
     ⊢-----^--------⊣ ⊢--------^-----------⊣
-    http://spf13.com/doc/extras/indexes/example
+    http://spf13.com/extras/indexes/example
 
 
 

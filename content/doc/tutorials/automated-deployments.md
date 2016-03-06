@@ -23,7 +23,7 @@ The  assumptions made for this tutorial are that you know how to use git for ver
 
 ## Creating a basic Hugo site
 
-There are already [pages](http://gohugo.io/doc/overview/quickstart/) dedicated to describing how to set up a Hugo site so we will only go through the most basic steps required to get a site up and running before we dive into the Wercker configuration. All the work for setting up the project is done using the command line, and kept as simple as possible.
+There are already [pages](http://gohugo.io/overview/quickstart/) dedicated to describing how to set up a Hugo site so we will only go through the most basic steps required to get a site up and running before we dive into the Wercker configuration. All the work for setting up the project is done using the command line, and kept as simple as possible.
 
 Create the new site using the `hugo new site` command, and we move into it.
 

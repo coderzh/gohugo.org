@@ -39,7 +39,7 @@ For the rest of the operations, we will be executing all commands from within th
 The new site will have the following structure
 
 {{< nohighlight >}}  ▸ archetypes/
-  ▸ doc/content/
+  ▸ content/
   ▸ data/
   ▸ layouts/
   ▸ static/
@@ -57,7 +57,7 @@ Hugo also has the ability to create a skeleton content page:
 
     $ hugo new about.md
 
-A new file is now created in `doc/content/` with the following contents:
+A new file is now created in `content/` with the following contents:
 
 ```
 +++
@@ -84,7 +84,7 @@ For fun, let’s create another piece of content and place some Markdown in it a
 
     $ hugo new post/first.md
 
-The new file is located at `doc/content/post/first.md`
+The new file is located at `content/post/first.md`
 
 We still lack any templates to tell us how to display the content.
 
@@ -175,7 +175,7 @@ Things to try:
 
  * Add a [new content file](/doc/content/organization/)
  * Create a [new section](/doc/content/sections/)
- * Modify [a template](/layout/doc/templates/)
+ * Modify [a template](/layout/templates/)
  * Create content with [TOML front matter](/doc/content/front-matter/)
  * Define your own field in [front matter](/doc/content/front-matter/)
  * Display that [field in the template](/layout/variables/)

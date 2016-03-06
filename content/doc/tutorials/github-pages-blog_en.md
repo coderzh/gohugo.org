@@ -59,7 +59,7 @@ Hugo assumes that you organize the content of your site in a meaningful way and 
 
 ```
 ▾ <root>/
-    ▾ doc/content/
+    ▾ content/
         ▾ posts/
 ```
 
@@ -71,7 +71,7 @@ Because there are so many files needed to fully compose a complete website, I wi
 
 ```
 ▾ <root>/
-    ▾ doc/content/
+    ▾ content/
         ▾ posts/
             <blog posts>.md
     ▾ static/
@@ -97,7 +97,7 @@ Each of the files in the example repository is well commented with a description
 
 ### Add Some Content
 
-The final step in creating the blog is to add some actual blog posts. To do this, simply create one Markdown file (with extension `.md`) for each new blog post. At the top of each file you should include a metadata section that tells Hugo some things about the post (see [docs](/doc/content/front-matter/)). For example, consider the yaml metadata section from the top of the file `/doc/content/posts/newest.md` from the example repository:
+The final step in creating the blog is to add some actual blog posts. To do this, simply create one Markdown file (with extension `.md`) for each new blog post. At the top of each file you should include a metadata section that tells Hugo some things about the post (see [docs](/doc/content/front-matter/)). For example, consider the yaml metadata section from the top of the file `/content/posts/newest.md` from the example repository:
 
     ---
     title: "Just another sample post"
@@ -166,14 +166,14 @@ After executing these commands and waiting for the GitHub servers to update, the
 
 Now, as you add new posts to your blog, you will follow steps that look something like the following:
 
-* Create the Markdown source for the new post within the `doc/content/posts` directory
+* Create the Markdown source for the new post within the `content/posts` directory
 * Preview your work by running Hugo in server mode with `hugo server`
 * Run Hugo not in server mode so that the generated urls will be correct for the website
 * Add and commit the new post in `master` branch
 * Push the `master` branch
 * Push the public subtree to the remote `gh-pages` branch
 
-The first two items in the previous list are simply a way to conveniently preview your content as you write. This is a dynamic and fairly streamlined process. All the remaining items, however, are the same every time you want to add new content to the website. To make this repetitive process easier, I have adapted a script from the source repository for the [Chimer Arts & Maker Space](https://github.com/chimera/chimeraarts.org) website that is highlighted in the [Hugo Showcase](/doc/showcase/). The script lives in a file called `deploy.sh` and has the following contents:
+The first two items in the previous list are simply a way to conveniently preview your content as you write. This is a dynamic and fairly streamlined process. All the remaining items, however, are the same every time you want to add new content to the website. To make this repetitive process easier, I have adapted a script from the source repository for the [Chimer Arts & Maker Space](https://github.com/chimera/chimeraarts.org) website that is highlighted in the [Hugo Showcase](/showcase/). The script lives in a file called `deploy.sh` and has the following contents:
 
 **Note:**
 
