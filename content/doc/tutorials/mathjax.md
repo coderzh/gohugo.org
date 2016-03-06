@@ -10,37 +10,38 @@ prev: /doc/tutorials/installing-on-windows
 title: MathJax Support
 toc: true
 weight: 10
+translated: true
 ---
 
-## What is MathJax?
+## 什么是 MathJax?
 
-[MathJax](http://www.mathjax.org/) is a JavaScript library that allows the display of mathematical expressions described via a LaTeX-style syntax in the HTML (or Markdown) source of a web page. As it is a pure a JavaScript library, getting it to work within Hugo is fairly straightforward, but does have some oddities that will be discussed here.
+[MathJax](http://www.mathjax.org/) 是一个 JavaScript 库，可以让你使用 LaTeX 风格的语法，在网页的 HTML （或者 Markdown）的源码中显示数学表达式。因为它是一个纯 Javascript 的库，在 Hugo 中是可以直接使用的，但也会有一些奇怪的问题，下面会详细讨论。
 
-This is not an introduction into actually using MathJax to render typeset mathematics on your website. Instead, this page is a collection of tips and hints for one way to get MathJax working on a website built with Hugo.
+本篇教程并非介绍在网站上实际使用 MathJax 来渲染输入的数学表达式。相反，本篇教程收集了让 MathJax 在 Hugo 构建的网站上工作的一些的提示和技巧。
 
-## Enabling MathJax
+## 启用 MathJax
 
-The first step is to enable MathJax on pages that you would like to have typeset math. There are multiple ways to do this (adventurous readers can consult the [Loading and Configuring](http://docs.mathjax.org/en/latest/configuration.html) section of the MathJax documentation for additional methods of including MathJax), but the easiest way is to use the secure MathJax CDN by including the following HTML snippet in the source of a page:
+第一步是在你想显示数学表达式排版的页面时启用 MathJax。这么做的方法有很多种（喜欢折腾的读者可以参考 MathJax 文档中的 [载入和配置](http://docs.mathjax.org/en/latest/configuration.html) 部分，来获得更多包含 MathJax 的方法），但最简单的方法是使用安全的 MathJax CDN，可以在页面的源码中插入下面的 HTML 代码：
 
     <script type="text/javascript"
       src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
 
-One way to ensure that this code is included in all pages is to put it in one of the templates that live in the `layouts/partials/` directory. For example, I have included this in the bottom of my template `footer.html` because I know that the footer will be included in every page of my website.
+保证所有页面都包含这段代码的方法是把它放在 `layouts/partials/` 文件夹中的一个模板中。比如，我把这段代码放在了我的模板 `footer.html` 的底部，因为我知道 footer 将会包含在我网站中的每个页面中。
 
-### Options and Features
+### 选项和特性
 
-MathJax is a stable open-source library with many features. I encourage the interested reader to view the [MathJax Documentation](http://docs.mathjax.org/en/latest/index.html), specifically the sections on [Basic Usage](http://docs.mathjax.org/en/latest/index.html#basic-usage) and [MathJax Configuration Options](http://docs.mathjax.org/en/latest/index.html#mathjax-configuration-options).
+MathJax 是一个拥有许多特性的稳定开源库。我鼓励有兴趣的读者看一下 [MathJax 文档](http://docs.mathjax.org/en/latest/index.html)，尤其是 [基本用法](http://docs.mathjax.org/en/latest/index.html#basic-usage) 和 [MathJax 配置选项](http://docs.mathjax.org/en/latest/index.html#mathjax-configuration-options)的部分。
 
-## Issues with Markdown
+## 与 Markdown 的问题
 
-After enabling MathJax, any math entered in-between proper markers (see documentation) will be processed and typeset in the web page. One issue that comes up, however, with Markdown is that the underscore character (`_`) is interpreted by Markdown as a way to wrap text in `emph` blocks while LaTeX (MathJax) interprets the underscore as a way to create a subscript. This "double speak" of the underscore can result in some unexpected and unwanted behavior.
+在启用 MathJax 后，任何在特定标记（见文档）中输入的数学表达式都将被处理，并排版显示在网页上。然而，和 Markdown 一起使用就会带来一个问题， 在 Markdown 中被下划线（`_`）包围的文字表示 `强调` 的意思，而 LaTeX (MathJax) 使用下划线来创建一个下标。下划线的这种 “双重标准” 会导致一些意料外的情况发生。
 
-### Solution
+### 解决方法
 
-There are multiple ways to remedy this problem. One solution is to simply escape each underscore in your math code by entering `\_` instead of `_`. This can become quite tedious if the equations you are entering are full of subscripts.
+解决这个问题有几种方法。其中之一是通过输入 `\_` 而不是 `_`，在数学表达式的代码的每个下划线都添加转义符号。如果你输入的表达式全是下标，这么做会变得非常冗余乏味。
 
-Another option is to tell Markdown to treat the MathJax code as verbatim code and not process it. One way to do this is to wrap the math expression inside a `<div>` `</div>` block. Markdown would ignore these sections and they would get passed directly on to MathJax and processed correctly. This works great for display style mathematics, but for inline math expressions the line break induced by the `<div>` is not acceptable. The syntax for instructing Markdown to treat inline text as verbatim is by wrapping it in backticks (`` ` ``). You might have noticed, however, that the text included in between backticks is rendered differently than standard text (on this site these are items highlighted in red). To get around this problem, we could create a new CSS entry that would apply standard styling to all inline verbatim text that includes MathJax code. Below I will show the HTML and CSS source that would accomplish this (note this solution was adapted from [this blog post](http://doswa.com/2011/07/20/mathjax-in-markdown.html)---all credit goes to the original author).
+另一种方法是把 MathJax 代码认为是逐字的代码，并不处理它。有一种这么做的方法是把数学表达式放到一个 `<div>` `</div>` 块中。Markdown 将会忽略这些部分，而且它们会被直接传入 MathJax 中并被正确处理。这用于显示有样式的数学公式是最好的，但对于内嵌的数学表达式来说，嵌入在 `<div>` 中是不可取的方法。Markdown 处理内嵌文字的语法是把它们包含在倒引号（`` ` ``）中。然而，你可能已经注意到了，在倒引号中包含的文字和标准的文字的渲染方式是不同的（在本网站上这些元素以红色高亮）。为了解决这个问题，我们可以创建一条新的 CSS，在所有的内嵌逐字文字包括 MathJax 代码上应用标准样式。下面我将展示完成这个目的的 HTML 和 CSS 代码（注意这个方法修改自[这篇博客文章](http://doswa.com/2011/07/20/mathjax-in-markdown.html)---所有荣誉归原作者所有）。
 
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -68,7 +69,7 @@ Another option is to tell Markdown to treat the MathJax code as verbatim code an
     });
     </script>
 
-As before, this content should be included in the HTML source of each page that will be using MathJax. The next code snippet contains the CSS that is used to have verbatim MathJax blocks render with the same font style as the body of the page.
+和前面一样，这段内容应该包含在每个使用 MathJax 的页面的 HTML 源码中。下面的代码段包含了用于让逐字 MathJax 块使用与页面主体一样的字体样式来渲染的 CSS 样式。
 
 
     code.has-jax {font: inherit;
@@ -77,8 +78,8 @@ As before, this content should be included in the HTML source of each page that 
                   border: inherit;
                   color: #515151;}
 
-In the CSS snippet, notice the line `color: #515151;`. `#515151` is the value assigned to the `color` attribute of the `body` class in my CSS. In order for the equations to fit in with the body of a web page, this value should be the same as the color of the body.
+在 CSS 代码中，注意这一行 `color: #515151;`。`#515151` 在我的 CSS 中是分配给 `body` 类的 `color` 元素的值。为了让公式与网页的主体适配，这个值应该和主体的颜色值相同。
 
-### Usage
+### 使用
 
-With this setup, everything is in place for a natural usage of MathJax on pages generated using Hugo. In order to include inline mathematics, just put LaTeX code in between `` `$ TeX Code $` `` or `` `\( TeX Code \)` ``. To include display style mathematics, just put LaTeX code in between `<div>$$TeX Code$$</div>`. All the math will be properly typeset and displayed within your Hugo generated web page!
+有了这样的配置，在 Hugo 生成的页面上自然使用 MathJax 就没什么问题了。为了包含内嵌数学表达式，仅需要把 LaTeX 代码放入 `` `$ TeX Code $` `` 或 `` `\( TeX Code \)` `` 中。为了包含有显示样式的数学表达式，仅需要把 LaTeX 代码放入 `<div>$$TeX Code$$</div>` 中。所有的数学表达式都将会在 Hugo 生成的网页中用合适的样式展示出来！
