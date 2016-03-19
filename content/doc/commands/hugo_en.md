@@ -4,7 +4,7 @@ doc:
 - commands_en
 slug: hugo
 title: hugo
-url: /doc/commands/hugo
+url: /doc/commands/hugo_en
 ---
 
 ## hugo
