@@ -8,14 +8,15 @@ title: "关于Hugo.org"
 
 于是，我利用周末的时间，注册域名（居然注册到了[gohugo.org](http://www.gohugo.org)这个域名），用`Hugo`本身搭建了这个网站，运行在 [DigitalOcean](https://www.digitalocean.com/?refcode=e131e2bba197) 的 `VPS` 上。
 
+（更新：已转到 GitHub Pages 托管）
+
 该网站所有内容都在 `GitHub` 开源，地址：
 
 [https://github.com/coderzh/gohugo.org](https://github.com/coderzh/gohugo.org)
 
 如果这个网站对你有帮助，或者认为这个网站很有意义，欢迎进行捐赠。
 
-这也许能帮助我使用更好配置的 `VPS` ，或者将该网站迁移到国内的云主机上，从而提供更快更好的服务。
-
 ![wechat](/pay/wechat.jpg) ![alipay](/pay/alipay.jpg)
 
 同时，有任何疑问、建议或交流，欢迎加入Hugo交流QQ群：512499080
+
