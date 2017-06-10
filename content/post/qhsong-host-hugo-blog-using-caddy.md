@@ -11,6 +11,7 @@ date: 2017-04-30T20:55:09+08:00
 author: qhsong
 title: 使用Caddy和Hugo构建个人博客
 thumbnail: http://7xlx3k.com1.z0.glb.clouddn.com/sqhme.png-wt
+redirect: https://sqh.me/tech/host-hugo-blog-using-caddy/
 weight: -100
 
 ---
