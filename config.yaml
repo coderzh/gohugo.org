@@ -1,7 +1,7 @@
-baseurl: "http://www.gohugo.org"
+baseurl: "https://www.gohugo.org"
 languageCode: "zh-CN"
 title: "Hugo中文文档"
-copyright: "Copyright © <a href=\"http://blog.coderzh.com/\">CoderZh</a> 2015."
+copyright: "Copyright © <a href=\"https://blog.coderzh.com/\">CoderZh</a> 2015."
 theme: "hugo-org"
 canonifyurls: true
 RSSUri: "feed.xml"
