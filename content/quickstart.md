@@ -57,8 +57,10 @@ $ cd /path/to/site
 ```
   ▸ archetypes/
   ▸ content/
+  ▸ data/
   ▸ layouts/
   ▸ static/
+  ▸ themes
     config.toml
 ```
 
